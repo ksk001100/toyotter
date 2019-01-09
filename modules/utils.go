@@ -8,7 +8,7 @@ import (
 	"github.com/logrusorgru/aurora"
 )
 
-// ContainsString Hello
+// ContainsString 配列に特定の文字列が含まれるかチェック
 func ContainsString(s []string, e string) bool {
 	for _, a := range s {
 		if a == e {
