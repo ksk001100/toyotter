@@ -23,7 +23,7 @@ func UnFollow(api *anaconda.TwitterApi, screenName string) {
 	user, err := api.UnfollowUser(screenName)
 
 	if err != nil {
-		modules.ErrorMessage("フォローに失敗したよ")
+		modules.ErrorMessage("フォロー解除に失敗したよ")
 	}
 
 	fmt.Println(modules.GetFormatUser(user))
