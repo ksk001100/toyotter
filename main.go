@@ -183,6 +183,26 @@ func main() {
 				return nil
 			},
 		},
+		{
+			Name:    "block",
+			Aliases: []string{"blk"},
+			Usage:   "toyotter2 block [screenName]",
+			Flags: []cli.Flag{
+				cli.BoolFlag{
+					Name:  "delete, d",
+					Usage: "toyotter2 block [screenName] --delete",
+				},
+			},
+			Action: func(c *cli.Context) error {
+				screenName := c.Args().First()
+				if c.Bool("delete") {
+					twitter.UnBlock(api, screenName, v)
+				} else {
+					twitter.Block(api, screenName, v)
+				}
+				return nil
+			},
+		},
 		// {
 		// 	Name:  "dm",
 		// 	Usage: "toyotter2 dm [screenName] [text]",
