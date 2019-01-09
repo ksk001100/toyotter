@@ -163,16 +163,16 @@ func main() {
 				return nil
 			},
 		},
-		{
-			Name:  "dm",
-			Usage: "toyotter2 dm [screenName] [text]",
-			Action: func(c *cli.Context) error {
-				screenName := c.Args().Get(1)
-				text := c.Args().Get(2)
-				twitter.DirectMessage(api, screenName, text)
-				return nil
-			},
-		},
+		// {
+		// 	Name:  "dm",
+		// 	Usage: "toyotter2 dm [screenName] [text]",
+		// 	Action: func(c *cli.Context) error {
+		// 		screenName := c.Args().Get(0)
+		// 		text := c.Args().Get(1)
+		// 		twitter.DirectMessage(api, screenName, text)
+		// 		return nil
+		// 	},
+		// },
 	}
 
 	app.Run(os.Args)
