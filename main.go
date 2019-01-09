@@ -94,8 +94,9 @@ func main() {
 			},
 		},
 		{
-			Name:  "search",
-			Usage: "toyotter2 search [option]=[text]",
+			Name:    "search",
+			Aliases: []string{"s"},
+			Usage:   "toyotter2 search [option]=[text]",
 			Flags: []cli.Flag{
 				cli.StringFlag{
 					Name:  "user, u",
