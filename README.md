@@ -15,6 +15,12 @@ $ brew install toyotter2
 ```
 
 `~/.env.toyotter` にTwitterのキーを設定してください
+```
+CONSUMER_KEY=xxxxxxxxxxxxxxxxxxxxxxx
+CONSUMER_SECRET=xxxxxxxxxxxxxxxxxxxxxxx
+ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxx
+ACCESS_TOKEN_SECRET=xxxxxxxxxxxxxxxxxxxxxxx
+```
 
 ## 使い方
 `$ toyotter2 --help` を参照してください
