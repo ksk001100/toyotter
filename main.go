@@ -83,7 +83,7 @@ func main() {
 			Flags: []cli.Flag{
 				cli.StringFlag{
 					Name:  "count, c",
-					Value: "20",
+					Value: "10",
 					Usage: "toyotter2 timeline --count=[count]",
 				},
 			},
@@ -107,7 +107,7 @@ func main() {
 				},
 				cli.StringFlag{
 					Name:  "count, c",
-					Value: "20",
+					Value: "10",
 					Usage: "toyotter2 search --{user|tweet}=[text] --count=[count]",
 				},
 			},
