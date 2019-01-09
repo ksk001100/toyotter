@@ -29,6 +29,8 @@ ACCESS_TOKEN_SECRET=xxxxxxxxxxxxxxxxxxxxxxx
 $ toyotter2 tweet "Hello world" #=> Hello worldをツイート
 $ toyotter2 tw "Bye" #=> World!!をツイート
 $ toyotter2 tw delete 23408309248 #=> idが23408309248のツイート削除
+$ toyotter2 tweet "Hello world" --image image.jpg #=> 画像ツイート
+$ toyotter2 tw "Hello" -img=image.jpg #=> 画像ツイート
 ```
 
 ### タイムライン
