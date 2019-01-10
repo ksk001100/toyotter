@@ -40,7 +40,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "toyotter2"
 	app.Usage = "toyotter2 [command] [...option]"
-	app.Version = "0.1.1"
+	app.Version = "0.1.3"
 
 	app.Commands = []cli.Command{
 		{
