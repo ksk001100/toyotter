@@ -29,3 +29,24 @@ func UnBlock(api *anaconda.TwitterApi, screenName string, v url.Values) {
 
 	fmt.Println(modules.GetFormatUser(user))
 }
+
+// BlockUser ブロックユーザー一覧
+func BlockUser(api *anaconda.TwitterApi, v url.Values) {
+	userCursor, err := api.GetBlocksList(v)
+
+	if err != nil {
+		modules.ErrorMessage("ブロックユーザー一覧の取得に失敗したよ")
+	}
+
+	for _, user := range userCursor.Users {
+		fmt.Println(modules.GetFormatUser(user))
+	}
+
+	for userCursor.Next_cursor != 0 {
+		v.Set("cursor", userCursor.Next_cursor_str)
+		userCursor, _ = api.GetBlocksList(v)
+		for _, user := range userCursor.Users {
+			fmt.Println(modules.GetFormatUser(user))
+		}
+	}
+}
