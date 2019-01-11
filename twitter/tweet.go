@@ -3,6 +3,7 @@ package twitter
 import (
 	"fmt"
 	"net/url"
+	"strconv"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/KeisukeToyota/toyotter2/modules"
@@ -31,9 +32,8 @@ func DeleteTweet(api *anaconda.TwitterApi, tweetID int64) {
 }
 
 // Reply リプライ
-func Reply(api *anaconda.TwitterApi, text string, tweetID int64) {
-	v := url.Values{}
-	v.Set("in_reply_to_status_id", string(tweetID))
+func Reply(api *anaconda.TwitterApi, text string, tweetID int64, v url.Values) {
+	v.Set("in_reply_to_status_id", strconv.FormatInt(tweetID, 10))
 
 	tweet, err := api.GetTweet(tweetID, url.Values{})
 	if err != nil {
