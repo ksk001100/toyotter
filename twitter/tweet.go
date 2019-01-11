@@ -3,6 +3,7 @@ package twitter
 import (
 	"fmt"
 	"net/url"
+	"strconv"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/KeisukeToyota/toyotter2/modules"
@@ -28,4 +29,22 @@ func DeleteTweet(api *anaconda.TwitterApi, tweetID int64) {
 	}
 
 	fmt.Println(modules.GetFormatTweet(tweet))
+}
+
+// Reply リプライ
+func Reply(api *anaconda.TwitterApi, text string, tweetID int64, v url.Values) {
+	v.Set("in_reply_to_status_id", strconv.FormatInt(tweetID, 10))
+
+	tweet, err := api.GetTweet(tweetID, url.Values{})
+	if err != nil {
+		modules.ErrorMessage("ツイートが見つからないよ")
+	}
+
+	replayUserName := "@" + tweet.User.ScreenName + " "
+	replayTweet, replyErr := api.PostTweet(replayUserName+text, v)
+	if replyErr != nil {
+		modules.ErrorMessage("リプライに失敗したよ")
+	}
+
+	fmt.Println(modules.GetFormatTweet(replayTweet))
 }
