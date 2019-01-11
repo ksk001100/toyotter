@@ -3,7 +3,6 @@ package twitter
 import (
 	"fmt"
 	"net/url"
-	"regexp"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/KeisukeToyota/toyotter2/modules"
@@ -33,11 +32,19 @@ func DeleteTweet(api *anaconda.TwitterApi, tweetID int64) {
 
 // Reply リプライ
 func Reply(api *anaconda.TwitterApi, text string, tweetID int64) {
-	r := regexp.MustCompile(`@[0-9a-zA-Z_]{1,15}`)
+	v := url.Values{}
+	v.Set("in_reply_to_status_id", string(tweetID))
+
 	tweet, err := api.GetTweet(tweetID, url.Values{})
 	if err != nil {
 		modules.ErrorMessage("ツイートが見つからないよ")
 	}
 
-	r.FindAllStringSubmatch(tweet.FullText, -1)
+	replayUserName := "@" + tweet.User.ScreenName + " "
+	replayTweet, replyErr := api.PostTweet(replayUserName+text, v)
+	if replyErr != nil {
+		modules.ErrorMessage("リプライに失敗したよ")
+	}
+
+	fmt.Println(modules.GetFormatTweet(replayTweet))
 }
