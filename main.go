@@ -38,7 +38,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "toyotter2"
 	app.Usage = "toyotter2 [command] [...option]"
-	app.Version = "0.2.0"
+	app.Version = "0.2.1"
 
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),
