@@ -8,8 +8,8 @@ import (
 	"github.com/KeisukeToyota/toyotter2/modules"
 )
 
-// Mension メンション
-func Mension(api *anaconda.TwitterApi, v url.Values) {
+// Mention メンション
+func Mention(api *anaconda.TwitterApi, v url.Values) {
 	tweets, err := api.GetMentionsTimeline(v)
 
 	if err != nil {
