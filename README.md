@@ -28,7 +28,6 @@ ACCESS_TOKEN_SECRET=xxxxxxxxxxxxxxxxxxxxxxx
 ```shell
 $ toyotter2 tweet "Hello world" #=> Hello worldをツイート
 $ toyotter2 tw "Bye" #=> World!!をツイート
-$ toyotter2 tw delete 23408309248 #=> idが23408309248のツイート削除
 $ toyotter2 tweet "Hello world" --image image.jpg #=> 画像ツイート
 $ toyotter2 tw "Hello" -img=image.jpg #=> 画像ツイート
 ```
@@ -78,6 +77,20 @@ $ toyotter2 block TwitterJP #=> @TwitterJPをブロック
 $ toyotter2 blk TwitterJP #=> @TwitterJPをブロック
 $ toyotter2 block TwitterJP --delete #=> @TwitterJPをブロック解除
 $ toyotter2 blk TwitterJP -d #=> @TwitterJPをブロック解除
+```
+
+### 削除
+```shell
+$ toyotter2 delete tweet 84092384092 #=> idが84092384092のツイート削除
+$ toyotter2 del tw 84092384092 #=> idが84092384092のツイート削除
+```
+
+### メンション一覧
+```
+$ toyotter2 mention #=> メンション一覧取得(デフォルトで10件)
+$ toyotter2 men #=> メンション一覧取得(デフォルトで10件)
+$ toyotter2 mention --count 20 #=> メンション一覧20件取得
+$ toyotter2 men -c 20 #=> メンション一覧20件取得
 ```
 
 ### ヘルプ
