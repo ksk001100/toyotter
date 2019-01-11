@@ -4,11 +4,10 @@ import (
 	"net/url"
 	"os"
 	"os/user"
-	"strconv"
 
 	"github.com/ChimeraCoder/anaconda"
+	"github.com/KeisukeToyota/toyotter2/commands"
 	"github.com/KeisukeToyota/toyotter2/modules"
-	"github.com/KeisukeToyota/toyotter2/twitter"
 	"github.com/joho/godotenv"
 	"github.com/urfave/cli"
 )
@@ -42,216 +41,14 @@ func main() {
 	app.Version = "0.2.0"
 
 	app.Commands = []cli.Command{
-		{
-			Name:    "tweet",
-			Aliases: []string{"tw"},
-			Usage:   "toyotter2 tweet [text]",
-			Flags: []cli.Flag{
-				cli.StringFlag{
-					Name:  "image, img",
-					Usage: "toyotter2 tweet [text] --image=[imagePath]",
-				},
-				cli.StringFlag{
-					Name:  "reply, rep",
-					Usage: "toyotter2 tweet [text] --reply=[tweetID]",
-				},
-			},
-			Action: func(c *cli.Context) error {
-				text := c.Args().First()
-				if len(c.String("image")) > 0 {
-					media := twitter.UploadMedia(api, c.String("image"))
-					v.Set("media_ids", media.MediaIDString)
-				}
-
-				if len(c.String("reply")) > 0 {
-					tweetID, _ := strconv.ParseInt(c.String("reply"), 10, 64)
-					twitter.Reply(api, text, tweetID, v)
-				} else {
-					twitter.Tweet(api, text, v)
-				}
-				return nil
-			},
-		},
-		{
-			Name:    "timeline",
-			Aliases: []string{"tl"},
-			Usage:   "toyotter2 timeline",
-			Flags: []cli.Flag{
-				cli.StringFlag{
-					Name:  "count, c",
-					Value: "10",
-					Usage: "toyotter2 timeline --count=[count]",
-				},
-			},
-			Action: func(c *cli.Context) error {
-				v.Set("count", c.String("count"))
-				twitter.HomeTimeline(api, v)
-				return nil
-			},
-		},
-		{
-			Name:    "search",
-			Aliases: []string{"s"},
-			Usage:   "toyotter2 search [option]=[text]",
-			Flags: []cli.Flag{
-				cli.StringFlag{
-					Name:  "user, u",
-					Usage: "toyotter2 search --user=[text]",
-				},
-				cli.StringFlag{
-					Name:  "tweet, tw",
-					Usage: "toyotter2 search --tweet=[text]",
-				},
-				cli.StringFlag{
-					Name:  "count, c",
-					Value: "10",
-					Usage: "toyotter2 search --{user|tweet}=[text] --count=[count]",
-				},
-			},
-			Action: func(c *cli.Context) error {
-				v.Set("count", c.String("count"))
-				if len(c.String("tweet")) > 0 {
-					text := c.String("tweet")
-					twitter.SearchTweet(api, text, v)
-				} else if len(c.String("user")) > 0 {
-					text := c.String("user")
-					twitter.SearchUser(api, text, v)
-				}
-				return nil
-			},
-		},
-		{
-			Name:    "retweet",
-			Aliases: []string{"rt"},
-			Usage:   "toyotter2 retweet [tweetID]",
-			Flags: []cli.Flag{
-				cli.BoolFlag{
-					Name:  "delete, d",
-					Usage: "toyotter2 retweet [tweetID] --delete",
-				},
-			},
-			Action: func(c *cli.Context) error {
-				tweetID, _ := strconv.ParseInt(c.Args().First(), 10, 64)
-				if c.Bool("delete") {
-					twitter.UnRetweet(api, tweetID)
-				} else {
-					twitter.Retweet(api, tweetID)
-				}
-				return nil
-			},
-		},
-		{
-			Name:    "favorite",
-			Aliases: []string{"fav"},
-			Usage:   "toyotter2 favorite [tweetID]",
-			Flags: []cli.Flag{
-				cli.BoolFlag{
-					Name:  "delete, d",
-					Usage: "toyotter2 favorite [tweetID] --delete",
-				},
-			},
-			Action: func(c *cli.Context) error {
-				tweetID, _ := strconv.ParseInt(c.Args().First(), 10, 64)
-				if c.Bool("delete") {
-					twitter.UnFavorite(api, tweetID)
-				} else {
-					twitter.Favorite(api, tweetID)
-				}
-				return nil
-			},
-		},
-		{
-			Name:    "follow",
-			Aliases: []string{"flw"},
-			Usage:   "toyotter2 follow [screenName]",
-			Flags: []cli.Flag{
-				cli.BoolFlag{
-					Name:  "delete, d",
-					Usage: "toyotter2 follow [screenName] --delete",
-				},
-			},
-			Action: func(c *cli.Context) error {
-				screenName := c.Args().First()
-				if c.Bool("delete") {
-					twitter.UnFollow(api, screenName)
-				} else {
-					twitter.Follow(api, screenName)
-				}
-				return nil
-			},
-		},
-		{
-			Name:    "block",
-			Aliases: []string{"blk"},
-			Usage:   "toyotter2 block [screenName]",
-			Flags: []cli.Flag{
-				cli.BoolFlag{
-					Name:  "delete, d",
-					Usage: "toyotter2 block [screenName] --delete",
-				},
-				cli.BoolFlag{
-					Name:  "list, l",
-					Usage: "toyotter2 block --list",
-				},
-			},
-			Action: func(c *cli.Context) error {
-				if c.Bool("list") {
-					twitter.BlockUser(api, url.Values{})
-				} else {
-					screenName := c.Args().First()
-					if c.Bool("delete") {
-						twitter.UnBlock(api, screenName, v)
-					} else {
-						twitter.Block(api, screenName, v)
-					}
-				}
-				return nil
-			},
-		},
-		{
-			Name:    "delete",
-			Aliases: []string{"del", "d"},
-			Usage:   "toyotter2 delete [command] [text]",
-			Subcommands: []cli.Command{
-				{
-					Name:    "tweet",
-					Aliases: []string{"tw"},
-					Usage:   "toyotter2 delete tweet [tweetID]",
-					Action: func(c *cli.Context) error {
-						tweetID, _ := strconv.ParseInt(c.Args().First(), 10, 64)
-						twitter.DeleteTweet(api, tweetID)
-						return nil
-					},
-				},
-			},
-		},
-		{
-			Name:    "mension",
-			Aliases: []string{"men"},
-			Usage:   "toyotter2 mension [option]",
-			Flags: []cli.Flag{
-				cli.StringFlag{
-					Name:  "count, c",
-					Value: "10",
-					Usage: "toyotter2 mension --count 20",
-				},
-			},
-			Action: func(c *cli.Context) error {
-				v.Set("count", c.String("count"))
-				twitter.Mension(api, v)
-				return nil
-			},
-		},
-		// {
-		// 	Name:  "dm",
-		// 	Usage: "toyotter2 dm [screenName] [text]",
-		// 	Action: func(c *cli.Context) error {
-		// 		screenName := c.Args().Get(0)
-		// 		text := c.Args().Get(1)
-		// 		twitter.DirectMessage(api, screenName, text)
-		// 		return nil
-		// 	},
-		// },
+		commands.TweetCommand(api, v),
+		commands.TimelineCommand(api, v),
+		commands.SearchCommand(api, v),
+		commands.RetweetCommand(api, v),
+		commands.FavoriteCommand(api, v),
+		commands.FollowCommand(api, v),
+		commands.BlockCommand(api, v),
+		commands.MentionCommand(api, v),
 	}
 
 	app.Run(os.Args)
