@@ -39,7 +39,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "toyotter2"
 	app.Usage = "toyotter2 [command] [...option]"
-	app.Version = "0.1.3"
+	app.Version = "0.2.0"
 
 	app.Commands = []cli.Command{
 		{
@@ -215,6 +215,23 @@ func main() {
 						return nil
 					},
 				},
+			},
+		},
+		{
+			Name:    "mension",
+			Aliases: []string{"men"},
+			Usage:   "toyotter2 mension [option]",
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "count, c",
+					Value: "10",
+					Usage: "toyotter2 mension --count 20",
+				},
+			},
+			Action: func(c *cli.Context) error {
+				v.Set("count", c.String("count"))
+				twitter.Mension(api, v)
+				return nil
 			},
 		},
 		// {
