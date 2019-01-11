@@ -189,13 +189,21 @@ func main() {
 					Name:  "delete, d",
 					Usage: "toyotter2 block [screenName] --delete",
 				},
+				cli.BoolFlag{
+					Name:  "list, l",
+					Usage: "toyotter2 block --list",
+				},
 			},
 			Action: func(c *cli.Context) error {
-				screenName := c.Args().First()
-				if c.Bool("delete") {
-					twitter.UnBlock(api, screenName, v)
+				if c.Bool("list") {
+					twitter.BlockUser(api, url.Values{})
 				} else {
-					twitter.Block(api, screenName, v)
+					screenName := c.Args().First()
+					if c.Bool("delete") {
+						twitter.UnBlock(api, screenName, v)
+					} else {
+						twitter.Block(api, screenName, v)
+					}
 				}
 				return nil
 			},
