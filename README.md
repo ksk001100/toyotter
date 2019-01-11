@@ -86,7 +86,7 @@ $ toyotter2 del tw 84092384092 #=> idが84092384092のツイート削除
 ```
 
 ### メンション一覧
-```
+```shell
 $ toyotter2 mention #=> メンション一覧取得(デフォルトで10件)
 $ toyotter2 men #=> メンション一覧取得(デフォルトで10件)
 $ toyotter2 mention --count 20 #=> メンション一覧20件取得
