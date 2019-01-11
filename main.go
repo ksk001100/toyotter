@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/url"
 	"os"
 	"os/user"
@@ -52,28 +51,25 @@ func main() {
 					Name:  "image, img",
 					Usage: "toyotter2 tweet [text] --image=[imagePath]",
 				},
+				cli.StringFlag{
+					Name:  "reply, rep",
+					Usage: "toyotter2 tweet [text] --reply=[tweetID]",
+				},
 			},
 			Action: func(c *cli.Context) error {
 				text := c.Args().First()
 				if len(c.String("image")) > 0 {
-					fmt.Println(c.String("image"))
 					media := twitter.UploadMedia(api, c.String("image"))
 					v.Set("media_ids", media.MediaIDString)
 				}
-				twitter.Tweet(api, text, v)
+
+				if len(c.String("reply")) > 0 {
+					tweetID, _ := strconv.ParseInt(c.String("reply"), 10, 64)
+					twitter.Reply(api, text, tweetID, v)
+				} else {
+					twitter.Tweet(api, text, v)
+				}
 				return nil
-			},
-			Subcommands: []cli.Command{
-				{
-					Name:    "delete",
-					Aliases: []string{"d"},
-					Usage:   "toyotter2 tweet delete [tweetID]",
-					Action: func(c *cli.Context) error {
-						tweetID, _ := strconv.ParseInt(c.Args().First(), 10, 64)
-						twitter.DeleteTweet(api, tweetID)
-						return nil
-					},
-				},
 			},
 		},
 		{
@@ -202,6 +198,23 @@ func main() {
 					twitter.Block(api, screenName, v)
 				}
 				return nil
+			},
+		},
+		{
+			Name:    "delete",
+			Aliases: []string{"del", "d"},
+			Usage:   "toyotter2 delete [command] [text]",
+			Subcommands: []cli.Command{
+				{
+					Name:    "tweet",
+					Aliases: []string{"tw"},
+					Usage:   "toyotter2 delete tweet [tweetID]",
+					Action: func(c *cli.Context) error {
+						tweetID, _ := strconv.ParseInt(c.Args().First(), 10, 64)
+						twitter.DeleteTweet(api, tweetID)
+						return nil
+					},
+				},
 			},
 		},
 		// {
