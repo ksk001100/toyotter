@@ -30,6 +30,8 @@ $ toyotter2 tweet "Hello world" #=> Hello worldをツイート
 $ toyotter2 tw "Bye" #=> World!!をツイート
 $ toyotter2 tweet "Hello world" --image image.jpg #=> 画像ツイート
 $ toyotter2 tw "Hello" -img=image.jpg #=> 画像ツイート
+$ toyotter2 tweet delete 34820348023 #=> 34820348023のツイート削除
+$ toyotter2 tw d 34820348023 #=> 34820348023のツイート削除
 $ toyotter2 tweet "Hi" --reply 34820348023 #=> Hiを34820348023のツイートにリプライ
 $ toyotter2 tw "Bye" --reply 34820348023 #=> Byeを34820348023のツイートにリプライ
 ```
@@ -79,12 +81,6 @@ $ toyotter2 block TwitterJP #=> @TwitterJPをブロック
 $ toyotter2 blk TwitterJP #=> @TwitterJPをブロック
 $ toyotter2 block TwitterJP --delete #=> @TwitterJPをブロック解除
 $ toyotter2 blk TwitterJP -d #=> @TwitterJPをブロック解除
-```
-
-### 削除
-```shell
-$ toyotter2 delete tweet 84092384092 #=> idが84092384092のツイート削除
-$ toyotter2 del tw 84092384092 #=> idが84092384092のツイート削除
 ```
 
 ### メンション一覧
