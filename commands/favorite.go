@@ -13,13 +13,13 @@ import (
 func FavoriteCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
-	command := cli.Command{}
-	command.Name = "favorite"
-	command.Aliases = []string{"fav"}
-	command.Usage = "toyotter2 favorite [tweetID]"
-	command.Flags = favoriteFlags()
-	command.Action = favoriteAction
-	return command
+	return cli.Command{
+		Name:    "favorite",
+		Aliases: []string{"fav"},
+		Usage:   "toyotter2 favorite [tweetID]",
+		Flags:   favoriteFlags(),
+		Action:  favoriteAction,
+	}
 }
 
 func favoriteFlags() []cli.Flag {

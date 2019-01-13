@@ -12,13 +12,13 @@ import (
 func BlockCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
-	command := cli.Command{}
-	command.Name = "block"
-	command.Aliases = []string{"blk"}
-	command.Usage = "toyotter2 block [screenName]"
-	command.Flags = blockFlags()
-	command.Action = blockAction
-	return command
+	return cli.Command{
+		Name:    "block",
+		Aliases: []string{"blk"},
+		Usage:   "toyotter2 block [screenName]",
+		Flags:   blockFlags(),
+		Action:  blockAction,
+	}
 }
 
 func blockFlags() []cli.Flag {
