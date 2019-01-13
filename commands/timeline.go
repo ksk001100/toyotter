@@ -12,13 +12,13 @@ import (
 func TimelineCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
-	command := cli.Command{}
-	command.Name = "timeline"
-	command.Aliases = []string{"tl"}
-	command.Usage = "toyotter2 timeline"
-	command.Flags = timelineFlags()
-	command.Action = timelineAction
-	return command
+	return cli.Command{
+		Name:    "timeline",
+		Aliases: []string{"tl"},
+		Usage:   "toyotter2 timeline [...option]",
+		Flags:   timelineFlags(),
+		Action:  timelineAction,
+	}
 }
 
 func timelineFlags() []cli.Flag {

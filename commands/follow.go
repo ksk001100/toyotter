@@ -12,13 +12,13 @@ import (
 func FollowCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
-	command := cli.Command{}
-	command.Name = "follow"
-	command.Aliases = []string{"flw"}
-	command.Usage = "toyotter2 follow [screenName]"
-	command.Flags = followFlags()
-	command.Action = followAction
-	return command
+	return cli.Command{
+		Name:    "follow",
+		Aliases: []string{"flw"},
+		Usage:   "toyotter2 follow [screenName]",
+		Flags:   followFlags(),
+		Action:  followAction,
+	}
 }
 
 func followFlags() []cli.Flag {

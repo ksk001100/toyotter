@@ -12,13 +12,13 @@ import (
 func SearchCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
-	command := cli.Command{}
-	command.Name = "search"
-	command.Aliases = []string{"s"}
-	command.Usage = "toyotter2 search [option]=[text]"
-	command.Flags = searchFlags()
-	command.Action = searchAction
-	return command
+	return cli.Command{
+		Name:    "search",
+		Aliases: []string{"s"},
+		Usage:   "toyotter2 search [option]=[text]",
+		Flags:   searchFlags(),
+		Action:  searchAction,
+	}
 }
 
 func searchFlags() []cli.Flag {

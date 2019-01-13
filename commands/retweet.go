@@ -13,13 +13,13 @@ import (
 func RetweetCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
-	command := cli.Command{}
-	command.Name = "retweet"
-	command.Aliases = []string{"rt"}
-	command.Usage = "toyotter2 retweet [tweetID]"
-	command.Flags = retweetFlags()
-	command.Action = retweetAction
-	return command
+	return cli.Command{
+		Name:    "retweet",
+		Aliases: []string{"rt"},
+		Usage:   "toyotter2 retweet [tweetID]",
+		Flags:   retweetFlags(),
+		Action:  retweetAction,
+	}
 }
 
 func retweetFlags() []cli.Flag {

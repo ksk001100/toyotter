@@ -13,13 +13,13 @@ import (
 func TweetCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
-	command := cli.Command{}
-	command.Name = "tweet"
-	command.Aliases = []string{"tw"}
-	command.Usage = "toyotter2 tweet [text]"
-	command.Flags = tweetFlags()
-	command.Action = tweetAction
-	return command
+	return cli.Command{
+		Name:    "tweet",
+		Aliases: []string{"tw"},
+		Usage:   "toyotter2 tweet [text] [...option]",
+		Flags:   tweetFlags(),
+		Action:  tweetAction,
+	}
 }
 
 func tweetFlags() []cli.Flag {
