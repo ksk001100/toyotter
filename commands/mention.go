@@ -12,13 +12,13 @@ import (
 func MentionCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
-	command := cli.Command{}
-	command.Name = "mention"
-	command.Aliases = []string{"men"}
-	command.Usage = "toyotter2 mension [option]"
-	command.Flags = mentionFlags()
-	command.Action = mentionAction
-	return command
+	return cli.Command{
+		Name:    "mention",
+		Aliases: []string{"men"},
+		Usage:   "toyotter2 mension [option]",
+		Flags:   mentionFlags(),
+		Action:  mentionAction,
+	}
 }
 
 func mentionFlags() []cli.Flag {
