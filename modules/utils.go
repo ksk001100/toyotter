@@ -3,6 +3,7 @@ package modules
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/logrusorgru/aurora"
@@ -20,20 +21,28 @@ func ContainsString(s []string, e string) bool {
 
 // GetFormatTweet ツイートの整形
 func GetFormatTweet(tweet anaconda.Tweet) string {
-	return fmt.Sprintf("\n[%s] (@%s) %s\n%s [Tweet ID : %s]",
-		aurora.Brown(tweet.CreatedAt).String(),
-		aurora.Magenta(tweet.User.ScreenName).String(),
-		aurora.Green(tweet.User.Name).String(),
-		aurora.Bold(tweet.FullText).String(),
-		aurora.Red(tweet.IdStr).String())
+	t, _ := tweet.CreatedAtTime()
+	japanTime, _ := time.LoadLocation("Asia/Tokyo")
+	createdAt := t.In(japanTime)
+	datetime := fmt.Sprintf("%d/%02d/%02d %02d:%02d:%02d",
+		createdAt.Year(), createdAt.Month(), createdAt.Day(),
+		createdAt.Hour(), createdAt.Minute(), createdAt.Second(),
+	)
+	return fmt.Sprintf("\n[%s] [アカウント名 : @%s | 名前 : %s | ユーザーID : %s]\n[いいね数 : %s | リツイート数 : %s]\n%s [ツイートID : %s]\n",
+		aurora.brown(datetime).string(), aurora.magenta(tweet.user.screenname).string(),
+		aurora.Green(tweet.User.Name).String(), aurora.Red(tweet.User.IdStr),
+		aurora.Cyan(tweet.FavoriteCount).String(), aurora.Cyan(tweet.RetweetCount).String(),
+		aurora.Bold(tweet.FullText).String(), aurora.Red(tweet.IdStr).String(),
+	)
 }
 
 // GetFormatUser ユーザー情報整形
 func GetFormatUser(user anaconda.User) string {
-	return fmt.Sprintf("\n(@%s) %s [User ID : %s]",
+	return fmt.Sprintf("\n(@%s) %s [ユーザーID : %s]",
 		aurora.Magenta(user.ScreenName).String(),
 		aurora.Green(user.Name).String(),
-		aurora.Red(user.IdStr).String())
+		aurora.Red(user.IdStr).String(),
+	)
 }
 
 // ErrorMessage エラーメッセージ
