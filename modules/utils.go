@@ -29,7 +29,7 @@ func GetFormatTweet(tweet anaconda.Tweet) string {
 		createdAt.Hour(), createdAt.Minute(), createdAt.Second(),
 	)
 	return fmt.Sprintf("\n[%s] [アカウント名 : @%s | 名前 : %s | ユーザーID : %s]\n[いいね数 : %s | リツイート数 : %s]\n%s [ツイートID : %s]\n",
-		aurora.brown(datetime).string(), aurora.magenta(tweet.user.screenname).string(),
+		aurora.Brown(datetime).String(), aurora.Magenta(tweet.User.ScreenName).String(),
 		aurora.Green(tweet.User.Name).String(), aurora.Red(tweet.User.IdStr),
 		aurora.Cyan(tweet.FavoriteCount).String(), aurora.Cyan(tweet.RetweetCount).String(),
 		aurora.Bold(tweet.FullText).String(), aurora.Red(tweet.IdStr).String(),
