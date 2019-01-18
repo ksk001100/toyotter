@@ -81,6 +81,7 @@ $ toyotter2 block TwitterJP #=> @TwitterJPをブロック
 $ toyotter2 blk TwitterJP #=> @TwitterJPをブロック
 $ toyotter2 block TwitterJP --delete #=> @TwitterJPをブロック解除
 $ toyotter2 blk TwitterJP -d #=> @TwitterJPをブロック解除
+$ toyotter2 block --list #=> ブロックユーザー一覧
 ```
 
 ### メンション一覧
@@ -89,6 +90,14 @@ $ toyotter2 mention #=> メンション一覧取得(デフォルトで10件)
 $ toyotter2 men #=> メンション一覧取得(デフォルトで10件)
 $ toyotter2 mention --count 20 #=> メンション一覧20件取得
 $ toyotter2 men -c 20 #=> メンション一覧20件取得
+```
+
+### ミュート
+```shell
+$ toyotter2 mute TwitterJP #=> @TwitterJPをミュート
+$ toyotter2 mu TwitterJP #=> @TwitterJPをミュート
+$ toyotter2 mute TwitterJP --delete #=> @TwitterJPをミュート解除
+$ toyotter2 mu TwitterJP -d #=> @TwitterJPをミュート解除
 ```
 
 ### ヘルプ
