@@ -3,7 +3,10 @@ package modules
 import (
 	"fmt"
 	"log"
+	"strings"
 	"time"
+
+	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/logrusorgru/aurora"
@@ -21,6 +24,7 @@ func ContainsString(s []string, e string) bool {
 
 // GetFormatTweet ツイートの整形
 func GetFormatTweet(tweet anaconda.Tweet) string {
+	width, _, _ := terminal.GetSize(0)
 	t, _ := tweet.CreatedAtTime()
 	japanTime, _ := time.LoadLocation("Asia/Tokyo")
 	createdAt := t.In(japanTime)
@@ -28,11 +32,12 @@ func GetFormatTweet(tweet anaconda.Tweet) string {
 		createdAt.Year(), createdAt.Month(), createdAt.Day(),
 		createdAt.Hour(), createdAt.Minute(), createdAt.Second(),
 	)
-	return fmt.Sprintf("\n[%s] [アカウント名 : @%s | 名前 : %s | ユーザーID : %s]\n[いいね数 : %s | リツイート数 : %s]\n%s [ツイートID : %s]\n",
-		aurora.Brown(datetime).String(), aurora.Magenta(tweet.User.ScreenName).String(),
+	return fmt.Sprintf("\n[%s]\n[アカウント名 : @%s | 名前 : %s | ユーザーID : %s]\n[いいね数 : %s | リツイート数 : %s]\n\n%s\n\n[ツイートID : %s]\n\n%s\n",
+		aurora.Brown(datetime).String(), aurora.Green(tweet.User.ScreenName).String(),
 		aurora.Green(tweet.User.Name).String(), aurora.Red(tweet.User.IdStr),
-		aurora.Cyan(tweet.FavoriteCount).String(), aurora.Cyan(tweet.RetweetCount).String(),
+		aurora.Green(tweet.FavoriteCount).String(), aurora.Green(tweet.RetweetCount).String(),
 		aurora.Bold(tweet.FullText).String(), aurora.Red(tweet.IdStr).String(),
+		strings.Repeat("-", width),
 	)
 }
 
