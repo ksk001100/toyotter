@@ -3,49 +3,76 @@ package modules
 import (
 	"fmt"
 	"log"
+	"strings"
 	"time"
+
+	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/logrusorgru/aurora"
 )
 
-// ContainsString 配列に特定の文字列が含まれるかチェック
-func ContainsString(s []string, e string) bool {
-	for _, a := range s {
-		if a == e {
-			return true
-		}
-	}
-	return false
-}
-
 // GetFormatTweet ツイートの整形
 func GetFormatTweet(tweet anaconda.Tweet) string {
 	t, _ := tweet.CreatedAtTime()
-	japanTime, _ := time.LoadLocation("Asia/Tokyo")
-	createdAt := t.In(japanTime)
-	datetime := fmt.Sprintf("%d/%02d/%02d %02d:%02d:%02d",
-		createdAt.Year(), createdAt.Month(), createdAt.Day(),
-		createdAt.Hour(), createdAt.Minute(), createdAt.Second(),
-	)
-	return fmt.Sprintf("\n[%s] [アカウント名 : @%s | 名前 : %s | ユーザーID : %s]\n[いいね数 : %s | リツイート数 : %s]\n%s [ツイートID : %s]\n",
-		aurora.Brown(datetime).String(), aurora.Magenta(tweet.User.ScreenName).String(),
-		aurora.Green(tweet.User.Name).String(), aurora.Red(tweet.User.IdStr),
-		aurora.Cyan(tweet.FavoriteCount).String(), aurora.Cyan(tweet.RetweetCount).String(),
+	return fmt.Sprintf(getFormatTweetTemplate(),
+		aurora.Brown(getJapanDateTimeString(t)).String(), aurora.Green(tweet.User.Name).String(),
+		aurora.Green(tweet.User.ScreenName).String(), aurora.Red(tweet.User.IdStr).String(),
+		aurora.Green(tweet.FavoriteCount).String(), aurora.Green(tweet.RetweetCount).String(),
 		aurora.Bold(tweet.FullText).String(), aurora.Red(tweet.IdStr).String(),
+		SeparatorString(),
 	)
 }
 
 // GetFormatUser ユーザー情報整形
 func GetFormatUser(user anaconda.User) string {
-	return fmt.Sprintf("\n(@%s) %s [ユーザーID : %s]",
-		aurora.Magenta(user.ScreenName).String(),
-		aurora.Green(user.Name).String(),
-		aurora.Red(user.IdStr).String(),
+	return fmt.Sprintf(getFormatUserTemplate(),
+		aurora.Green(user.Name).String(), aurora.Green(user.ScreenName).String(),
+		aurora.Red(user.IdStr).String(), aurora.Green(user.FriendsCount).String(),
+		aurora.Green(user.FollowersCount).String(), aurora.Bold(user.Description).String(),
+		SeparatorString(),
 	)
 }
 
 // ErrorMessage エラーメッセージ
 func ErrorMessage(text string) {
 	log.Fatal(aurora.Red(text))
+}
+
+// SeparatorString セパレーター文字列
+func SeparatorString() string {
+	width, _, _ := terminal.GetSize(0)
+	return strings.Repeat("-", width)
+}
+
+func getJapanDateTimeString(t time.Time) string {
+	japanTime, _ := time.LoadLocation("Asia/Tokyo")
+	createdAt := t.In(japanTime)
+	return fmt.Sprintf("%d/%02d/%02d %02d:%02d:%02d",
+		createdAt.Year(), createdAt.Month(), createdAt.Day(),
+		createdAt.Hour(), createdAt.Minute(), createdAt.Second(),
+	)
+}
+
+func getFormatTweetTemplate() string {
+	return `
+[%s]
+[%s @%s | ユーザーID : %s]
+[いいね数 : %s | リツイート数 : %s]
+
+%s
+
+[ツイートID : %s]
+
+%s`
+}
+
+func getFormatUserTemplate() string {
+	return `
+[%s @%s | ユーザーID : %s]
+[フォロー数 : %s | フォロワー数 : %s]
+
+%s
+
+%s`
 }
