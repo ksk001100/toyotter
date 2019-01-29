@@ -38,15 +38,15 @@ $ toyotter2 tw "Bye" --reply 34820348023 #=> Byeを34820348023のツイートに
 
 ### タイムライン
 ```shell
-$ toyotter2 timeline #=> タイムライン取得(デフォルトで10件)
+$ toyotter2 timeline #=> タイムライン取得(デフォルトで5件)
 $ toyotter2 timeline --count 30 #=> タイムライン取得を30件取得
 $ toyotter2 tl -c=20 #=> タイムライン取得を20件取得
 ```
 
 ### 検索
 ```shell
-$ toyotter2 search --user twitter #=> twitterを含むユーザーを取得(デフォルトで10件)
-$ toyotter2 s --tweet twitter #=> twitterを含むツイートを取得(デフォルトで10件)
+$ toyotter2 search --user twitter #=> twitterを含むユーザーを取得(デフォルトで5件)
+$ toyotter2 s --tweet twitter #=> twitterを含むツイートを取得(デフォルトで5件)
 $ toyotter2 s -u twitter --count 20 #=> twitterを含むユーザーを20件取得
 $ toyotter2 search -tw=twitter -c=30 #=> twitterを含むツイートを30件取得
 ```
@@ -86,8 +86,8 @@ $ toyotter2 block --list #=> ブロックユーザー一覧
 
 ### メンション一覧
 ```shell
-$ toyotter2 mention #=> メンション一覧取得(デフォルトで10件)
-$ toyotter2 men #=> メンション一覧取得(デフォルトで10件)
+$ toyotter2 mention #=> メンション一覧取得(デフォルトで5件)
+$ toyotter2 men #=> メンション一覧取得(デフォルトで5件)
 $ toyotter2 mention --count 20 #=> メンション一覧20件取得
 $ toyotter2 men -c 20 #=> メンション一覧20件取得
 ```
