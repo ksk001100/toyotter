@@ -25,7 +25,7 @@ func timelineFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.StringFlag{
 			Name:  "count, c",
-			Value: "10",
+			Value: "5",
 			Usage: "toyotter2 timeline --count=[count]",
 		},
 	}

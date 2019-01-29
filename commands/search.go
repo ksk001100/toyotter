@@ -33,7 +33,7 @@ func searchFlags() []cli.Flag {
 		},
 		cli.StringFlag{
 			Name:  "count, c",
-			Value: "10",
+			Value: "5",
 			Usage: "toyotter2 search --{user|tweet}=[text] --count=[count]",
 		},
 	}
