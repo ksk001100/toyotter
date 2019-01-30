@@ -5,21 +5,22 @@
 ![](https://img.shields.io/github/license/KeisukeToyota/toyotter2.svg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/KeisukeToyota/toyotter2)](https://goreportcard.com/report/github.com/KeisukeToyota/toyotter2)
 
-Golang製のCUIベースTwitterクライアント
+CUI based Twitter client made with Golang
 
-## インストール
+## Install
 
 ```shell
 $ go get github.com/KeisukeToyota/toyotter2
 $ cp $GOPATH/src/github.com/KeisukeToyota/toyotter2/.env.example ~/.env.toyotter
 ```
-macOSはHomebrewでもインストールできます
+
+In macOS you can install it with Homebrew
 ```shell
 $ brew tap keisuketoyota/homebrew-toyotter2
 $ brew install toyotter2
 ```
 
-`~/.env.toyotter` にTwitterのキーを設定してください
+Please set up Twitter key to `~/.env.toyotter`
 ```
 CONSUMER_KEY=xxxxxxxxxxxxxxxxxxxxxxx
 CONSUMER_SECRET=xxxxxxxxxxxxxxxxxxxxxxx
@@ -27,88 +28,88 @@ ACCESS_TOKEN=xxxxxxxxxxxxxxxxxxxxxxx
 ACCESS_TOKEN_SECRET=xxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-## 使い方
+## Usage
 
-### ツイート
+### Tweet
 ```shell
-$ toyotter2 tweet "Hello world" #=> Hello worldをツイート
-$ toyotter2 tw "Bye" #=> World!!をツイート
-$ toyotter2 tweet "Hello world" --image image.jpg #=> 画像ツイート
-$ toyotter2 tw "Hello" -img=image.jpg #=> 画像ツイート
-$ toyotter2 tweet delete 34820348023 #=> 34820348023のツイート削除
-$ toyotter2 tw d 34820348023 #=> 34820348023のツイート削除
-$ toyotter2 tweet "Hi" --reply 34820348023 #=> Hiを34820348023のツイートにリプライ
-$ toyotter2 tw "Bye" --reply 34820348023 #=> Byeを34820348023のツイートにリプライ
+$ toyotter2 tweet "Hello world" #=> Tweet "Hello world"
+$ toyotter2 tw "Bye" #=> Tweet "Bye"
+$ toyotter2 tweet "Hello world" --image image.jpg #=> Tweet image
+$ toyotter2 tw "Hello" -img=image.jpg #=> Tweet image
+$ toyotter2 tweet delete 34820348023 #=> Delete the 34820348023 tweet
+$ toyotter2 tw d 34820348023 #=> Delete the 34820348023 tweet
+$ toyotter2 tweet "Hi" --reply 34820348023 #=> Reply to tweet of 34820348023
+$ toyotter2 tw "Bye" --reply 34820348023 #=> Reply to tweet of 34820348023
 ```
 
-### タイムライン
+### Timeline
 ```shell
-$ toyotter2 timeline #=> タイムライン取得(デフォルトで5件)
-$ toyotter2 timeline --count 30 #=> タイムライン取得を30件取得
-$ toyotter2 tl -c=20 #=> タイムライン取得を20件取得
+$ toyotter2 timeline #=> Get timeline(Get 5 by default)
+$ toyotter2 timeline --count 30 #=> Get 30 timelines
+$ toyotter2 tl -c=20 #=> Get 20 timelines
 ```
 
-### 検索
+### Search
 ```shell
-$ toyotter2 search --user twitter #=> twitterを含むユーザーを取得(デフォルトで5件)
-$ toyotter2 s --tweet twitter #=> twitterを含むツイートを取得(デフォルトで5件)
-$ toyotter2 s -u twitter --count 20 #=> twitterを含むユーザーを20件取得
-$ toyotter2 search -tw=twitter -c=30 #=> twitterを含むツイートを30件取得
+$ toyotter2 search --user twitter #=> Get users including "twitter"(Get 5 by default)
+$ toyotter2 s --tweet twitter #=> Get users including "twitter"(Get 5 by default)
+$ toyotter2 s -u twitter --count 20 #=> Get 20 users including twitter
+$ toyotter2 search -tw=twitter -c=30 #=> Get 30 users including twitter
 ```
 
-### リツイート
+### Retweet
 ```shell
-$ toyotter2 retweet 34820348023 #=> idが34820348023のツイートをリツイート
-$ toyotter2 rt 34820348023 #=>idが34820348023のツイートをリツイート
-$ toyotter2 retweet 34820348023 --delete #=> idが34820348023のツイートのリツイート解除
-$ toyotter2 rt 34820348023 -d #=> idが34820348023のツイートのリツイート解除
+$ toyotter2 retweet 34820348023 #=> Retweet tweet of ID 34820348023
+$ toyotter2 rt 34820348023 #=> Retweet tweet of ID 34820348023
+$ toyotter2 retweet 34820348023 --delete #=> UnRetweet tweet of ID 34820348023
+$ toyotter2 rt 34820348023 -d #=> UnRetweet tweet of ID 34820348023
 ```
 
-### いいね
+### Favorite
 ```shell
-$ toyotter2 favorite 34820348023 #=> idが34820348023のツイートをいいね
-$ toyotter2 fav 34820348023 #=> idが34820348023のツイートをいいね
-$ toyotter2 favorite 34820348023 --delete #=> idが34820348023のツイートをいいね解除
-$ toyotter2 fav 34820348023 -d #=> idが34820348023のツイートをいいね解除
+$ toyotter2 favorite 34820348023 #=> Favorite tweet of ID 34820348023
+$ toyotter2 fav 34820348023 #=> Favorite tweet of ID 34820348023
+$ toyotter2 favorite 34820348023 --delete #=> UnFavorite tweet of ID 34820348023
+$ toyotter2 fav 34820348023 -d #=> UnFavorite tweet of ID 34820348023
 ```
 
-### フォロー
+### Follow
 ```shell
-$ toyotter2 follow TwitterJP #=> @TwitterJPをフォロー
-$ toyotter2 flw TwitterJP #=> @TwitterJPをフォロー
-$ toyotter2 follow TwitterJP --delete #=> @TwitterJPをフォロー解除
-$ toyotter2 flw TwitterJP -d #=> @TwitterJPをフォロー解除
+$ toyotter2 follow TwitterJP #=> Follow @TwitterJP
+$ toyotter2 flw TwitterJP #=> Follow @TwitterJP
+$ toyotter2 follow TwitterJP --delete #=> UnFollow @TwitterJP
+$ toyotter2 flw TwitterJP -d #=> UnFollow @TwitterJP
 ```
 
-### ブロック
+### Block
 ```shell
-$ toyotter2 block TwitterJP #=> @TwitterJPをブロック
-$ toyotter2 blk TwitterJP #=> @TwitterJPをブロック
-$ toyotter2 block TwitterJP --delete #=> @TwitterJPをブロック解除
-$ toyotter2 blk TwitterJP -d #=> @TwitterJPをブロック解除
-$ toyotter2 block --list #=> ブロックユーザー一覧
+$ toyotter2 block TwitterJP #=> Block @TwitterJP
+$ toyotter2 blk TwitterJP #=> Block @TwitterJP
+$ toyotter2 block TwitterJP --delete #=> UnBlock @TwitterJP
+$ toyotter2 blk TwitterJP -d #=> UnBlock @TwitterJP
+$ toyotter2 block --list #=> Get block user list
 ```
 
-### メンション一覧
+### Mention list
 ```shell
-$ toyotter2 mention #=> メンション一覧取得(デフォルトで5件)
-$ toyotter2 men #=> メンション一覧取得(デフォルトで5件)
-$ toyotter2 mention --count 20 #=> メンション一覧20件取得
-$ toyotter2 men -c 20 #=> メンション一覧20件取得
+$ toyotter2 mention #=> Get mentions(Get 5 by default)
+$ toyotter2 men #=> Get mentions(Get 5 by default)
+$ toyotter2 mention --count 20 #=> Get 20 mentions
+$ toyotter2 men -c 20 #=> Get 20 mentions
 ```
 
-### ミュート
+### Mute
 ```shell
-$ toyotter2 mute TwitterJP #=> @TwitterJPをミュート
-$ toyotter2 mu TwitterJP #=> @TwitterJPをミュート
-$ toyotter2 mute TwitterJP --delete #=> @TwitterJPをミュート解除
-$ toyotter2 mu TwitterJP -d #=> @TwitterJPをミュート解除
+$ toyotter2 mute TwitterJP #=> Mute @TwitterJP
+$ toyotter2 mu TwitterJP #=> Mute @TwitterJP
+$ toyotter2 mute TwitterJP --delete #=> UnMute @TwitterJP
+$ toyotter2 mu TwitterJP -d #=> UnMute @TwitterJP
 ```
 
-### ヘルプ
+### Help
 ```shell
-$ toyotter2 --help #=> 全体のヘルプ
-$ toyotter2 -h #=> 全体のヘルプ
-$ toyotter2 timeline --help #=> timelineコマンドのヘルプ
-$ toyotter2 rt -h #=> retweetコマンドのヘルプ
+$ toyotter2 --help #=> Overall help
+$ toyotter2 -h #=> Overall help
+$ toyotter2 timeline --help #=> Timeline command help
+$ toyotter2 rt -h #=> Retweet command help
 ```
