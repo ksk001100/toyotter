@@ -8,12 +8,12 @@ import (
 	"github.com/KeisukeToyota/toyotter2/modules"
 )
 
-// SearchTweet ツイート検索
+// SearchTweet search tweet function
 func SearchTweet(api *anaconda.TwitterApi, text string, v url.Values) {
 	searchResult, err := api.GetSearch(text, v)
 
 	if err != nil {
-		modules.ErrorMessage("ツイート検索に失敗したよ")
+		modules.ErrorMessage("Search tweet failed")
 	}
 
 	for _, tweet := range searchResult.Statuses {
@@ -21,12 +21,12 @@ func SearchTweet(api *anaconda.TwitterApi, text string, v url.Values) {
 	}
 }
 
-// SearchUser ユーザー検索
+// SearchUser search user function
 func SearchUser(api *anaconda.TwitterApi, text string, v url.Values) {
 	searchResult, err := api.GetUserSearch(text, v)
 
 	if err != nil {
-		modules.ErrorMessage("ツイート検索に失敗したよ")
+		modules.ErrorMessage("Search user failedf")
 	}
 
 	for _, user := range searchResult {

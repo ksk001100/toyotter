@@ -7,23 +7,23 @@ import (
 	"github.com/KeisukeToyota/toyotter2/modules"
 )
 
-// Follow フォロー
+// Follow follow function
 func Follow(api *anaconda.TwitterApi, screenName string) {
 	user, err := api.FollowUser(screenName)
 
 	if err != nil {
-		modules.ErrorMessage("フォローに失敗したよ")
+		modules.ErrorMessage("Follow failed")
 	}
 
 	fmt.Println(modules.GetFormatUser(user))
 }
 
-// UnFollow フォロー解除
+// UnFollow unfollow function
 func UnFollow(api *anaconda.TwitterApi, screenName string) {
 	user, err := api.UnfollowUser(screenName)
 
 	if err != nil {
-		modules.ErrorMessage("フォロー解除に失敗したよ")
+		modules.ErrorMessage("UnFollow failed")
 	}
 
 	fmt.Println(modules.GetFormatUser(user))

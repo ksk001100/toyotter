@@ -8,7 +8,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-// FollowCommand フォローコマンド
+// FollowCommand follow command function
 func FollowCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val

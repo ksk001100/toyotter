@@ -8,7 +8,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-// TimelineCommand タイムラインコマンド
+// TimelineCommand timeline command function
 func TimelineCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
