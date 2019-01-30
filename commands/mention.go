@@ -8,7 +8,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-// MentionCommand メンションコマンド
+// MentionCommand mention command function
 func MentionCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val

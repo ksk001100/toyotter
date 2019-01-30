@@ -8,12 +8,12 @@ import (
 	"github.com/KeisukeToyota/toyotter2/modules"
 )
 
-// Mention メンション
+// Mention mention function
 func Mention(api *anaconda.TwitterApi, v url.Values) {
 	tweets, err := api.GetMentionsTimeline(v)
 
 	if err != nil {
-		modules.ErrorMessage("メンション取得に失敗したよ")
+		modules.ErrorMessage("Get mentions failed")
 	}
 
 	for _, tweet := range tweets {

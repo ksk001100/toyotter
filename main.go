@@ -20,7 +20,7 @@ func loadEnv() {
 
 	err = godotenv.Load(user.HomeDir + "/.env.toyotter")
 	if err != nil {
-		modules.ErrorMessage(".env.toyotterが見つからないよ")
+		modules.ErrorMessage("Not found ~/.env.toyotter")
 	}
 }
 

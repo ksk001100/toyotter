@@ -8,7 +8,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-// SearchCommand 検索コマンド
+// SearchCommand search command function
 func SearchCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val

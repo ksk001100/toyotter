@@ -9,7 +9,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-// FavoriteCommand いいねコマンド
+// FavoriteCommand favorite command function
 func FavoriteCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val
