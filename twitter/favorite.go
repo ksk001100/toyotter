@@ -7,23 +7,23 @@ import (
 	"github.com/KeisukeToyota/toyotter2/modules"
 )
 
-// Favorite いいね
+// Favorite favorite function
 func Favorite(api *anaconda.TwitterApi, tweetID int64) {
 	tweet, err := api.Favorite(tweetID)
 
 	if err != nil {
-		modules.ErrorMessage("いいねに失敗したよ")
+		modules.ErrorMessage("Favorite failed")
 	}
 
 	fmt.Println(modules.GetFormatTweet(tweet))
 }
 
-// UnFavorite いいね解除
+// UnFavorite unfavorite function
 func UnFavorite(api *anaconda.TwitterApi, tweetID int64) {
 	tweet, err := api.Unfavorite(tweetID)
 
 	if err != nil {
-		modules.ErrorMessage("いいね解除に失敗したよ")
+		modules.ErrorMessage("UnFavorite failed")
 	}
 
 	fmt.Println(modules.GetFormatTweet(tweet))

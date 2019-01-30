@@ -8,34 +8,34 @@ import (
 	"github.com/KeisukeToyota/toyotter2/modules"
 )
 
-// Block ブロック
+// Block block function
 func Block(api *anaconda.TwitterApi, screenName string, v url.Values) {
 	user, err := api.BlockUser(screenName, v)
 
 	if err != nil {
-		modules.ErrorMessage("ブロックに失敗したよ")
+		modules.ErrorMessage("Block failed")
 	}
 
 	fmt.Println(modules.GetFormatUser(user))
 }
 
-// UnBlock ブロック解除
+// UnBlock unblock function
 func UnBlock(api *anaconda.TwitterApi, screenName string, v url.Values) {
 	user, err := api.UnblockUser(screenName, v)
 
 	if err != nil {
-		modules.ErrorMessage("ブロック解除に失敗したよ")
+		modules.ErrorMessage("UnBlock failed")
 	}
 
 	fmt.Println(modules.GetFormatUser(user))
 }
 
-// BlockUser ブロックユーザー一覧
+// BlockUser block user list function
 func BlockUser(api *anaconda.TwitterApi, v url.Values) {
 	userCursor, err := api.GetBlocksList(v)
 
 	if err != nil {
-		modules.ErrorMessage("ブロックユーザー一覧の取得に失敗したよ")
+		modules.ErrorMessage("Get block user list failed")
 	}
 
 	for _, user := range userCursor.Users {
