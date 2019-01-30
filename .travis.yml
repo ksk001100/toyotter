@@ -1,0 +1,15 @@
+language: go
+
+install:
+ - go get -u golang.org/x/tools/cmd/goimports
+ - go get -u github.com/golang/lint/golint
+ - go get -u github.com/goreleaser/goreleaser
+
+script:
+ - go vet ./...
+ - diff <(goimports -d .) <(printf "")
+ - diff <(golint ./...) <(printf "")
+ - go test .
+
+after_success:
+ - goreleaser
