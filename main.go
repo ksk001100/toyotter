@@ -52,5 +52,9 @@ func main() {
 		commands.MuteCommand(api, v),
 	}
 
-	app.Run(os.Args)
+	err := app.Run(os.Args)
+
+	if err != nil {
+		panic(err)
+	}
 }
