@@ -1,5 +1,6 @@
 language: go
-
+go:
+  - "1.11"
 install:
  - go get -u golang.org/x/tools/cmd/goimports
  - go get -u github.com/golang/lint/golint
@@ -8,7 +9,7 @@ install:
 script:
  - go vet ./...
  - diff <(goimports -d .) <(printf "")
- - diff <(golint ./...) <(printf "")
+ - diff <(go list ./... | xargs -L1 golint -set_exit_status) <(printf "")
 
 after_success:
  - goreleaser
