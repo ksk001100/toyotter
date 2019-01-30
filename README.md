@@ -1,4 +1,9 @@
 # toyotter2
+![](https://img.shields.io/github/stars/KeisukeToyota/toyotter2.svg)
+![](https://img.shields.io/github/issues/KeisukeToyota/toyotter2.svg)
+![](https://img.shields.io/github/forks/KeisukeToyota/toyotter2.svg)
+![](https://img.shields.io/github/license/KeisukeToyota/toyotter2.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/KeisukeToyota/toyotter2)](https://goreportcard.com/report/github.com/KeisukeToyota/toyotter2)
 
 Golang製のCUIベースTwitterクライアント
 
@@ -6,7 +11,7 @@ Golang製のCUIベースTwitterクライアント
 
 ```shell
 $ go get github.com/KeisukeToyota/toyotter2
-$ cp $GOPATH/src/github.com/KeisukeToyota/toyotter2/.env.example ~/.env.toyotter 
+$ cp $GOPATH/src/github.com/KeisukeToyota/toyotter2/.env.example ~/.env.toyotter
 ```
 macOSはHomebrewでもインストールできます
 ```shell
@@ -107,4 +112,3 @@ $ toyotter2 -h #=> 全体のヘルプ
 $ toyotter2 timeline --help #=> timelineコマンドのヘルプ
 $ toyotter2 rt -h #=> retweetコマンドのヘルプ
 ```
-
