@@ -8,7 +8,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-// BlockCommand ブロックコマンド
+// BlockCommand block command function
 func BlockCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val

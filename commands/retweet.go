@@ -9,7 +9,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-// RetweetCommand リツイートコマンド
+// RetweetCommand retweet command function
 func RetweetCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	api = a
 	v = val

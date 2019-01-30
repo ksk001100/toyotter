@@ -12,7 +12,7 @@ import (
 	"github.com/logrusorgru/aurora"
 )
 
-// GetFormatTweet ツイートの整形
+// GetFormatTweet format tweet function
 func GetFormatTweet(tweet anaconda.Tweet) string {
 	t, _ := tweet.CreatedAtTime()
 	return fmt.Sprintf(getFormatTweetTemplate(),
@@ -24,7 +24,7 @@ func GetFormatTweet(tweet anaconda.Tweet) string {
 	)
 }
 
-// GetFormatUser ユーザー情報整形
+// GetFormatUser format user information function
 func GetFormatUser(user anaconda.User) string {
 	return fmt.Sprintf(getFormatUserTemplate(),
 		aurora.Green(user.Name).String(), aurora.Green(user.ScreenName).String(),
@@ -34,12 +34,12 @@ func GetFormatUser(user anaconda.User) string {
 	)
 }
 
-// ErrorMessage エラーメッセージ
+// ErrorMessage error message function
 func ErrorMessage(text string) {
 	log.Fatal(aurora.Red(text))
 }
 
-// SeparatorString セパレーター文字列
+// SeparatorString separator function
 func SeparatorString() string {
 	width, _, _ := terminal.GetSize(0)
 	return strings.Repeat("-", width)
@@ -57,20 +57,20 @@ func getJapanDateTimeString(t time.Time) string {
 func getFormatTweetTemplate() string {
 	return `
 [%s]
-[%s @%s | ユーザーID : %s]
-[いいね数 : %s | リツイート数 : %s]
+[%s @%s | UserID : %s]
+[Favorite : %s | Retweet : %s]
 
 %s
 
-[ツイートID : %s]
+[TweetID : %s]
 
 %s`
 }
 
 func getFormatUserTemplate() string {
 	return `
-[%s @%s | ユーザーID : %s]
-[フォロー数 : %s | フォロワー数 : %s]
+[%s @%s | UserID : %s]
+[Followed : %s | Follower : %s]
 
 %s
 
