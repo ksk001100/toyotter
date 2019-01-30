@@ -1,5 +1,6 @@
 # toyotter2
 ![](https://img.shields.io/github/stars/KeisukeToyota/toyotter2.svg)
+![](https://img.shields.io/github/release/KeisukeToyota/toyotter2.svg)
 ![](https://img.shields.io/github/issues/KeisukeToyota/toyotter2.svg)
 ![](https://img.shields.io/github/forks/KeisukeToyota/toyotter2.svg)
 ![](https://img.shields.io/github/license/KeisukeToyota/toyotter2.svg)
