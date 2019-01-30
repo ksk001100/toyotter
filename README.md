@@ -4,6 +4,7 @@
 ![](https://img.shields.io/github/issues/KeisukeToyota/toyotter2.svg)
 ![](https://img.shields.io/github/forks/KeisukeToyota/toyotter2.svg)
 ![](https://img.shields.io/github/license/KeisukeToyota/toyotter2.svg)
+[![Build Status](https://travis-ci.org/KeisukeToyota/toyotter2.svg?branch=master)](https://travis-ci.org/KeisukeToyota/toyotter2)
 [![Go Report Card](https://goreportcard.com/badge/github.com/KeisukeToyota/toyotter2)](https://goreportcard.com/report/github.com/KeisukeToyota/toyotter2)
 
 CUI based Twitter client made with Golang

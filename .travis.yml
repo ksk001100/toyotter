@@ -9,7 +9,6 @@ script:
  - go vet ./...
  - diff <(goimports -d .) <(printf "")
  - diff <(golint ./...) <(printf "")
- - go test .
 
 after_success:
  - goreleaser
