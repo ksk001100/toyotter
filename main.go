@@ -13,12 +13,12 @@ import (
 )
 
 func loadEnv() {
-	user, err := user.Current()
+	u, err := user.Current()
 	if err != nil {
 		panic(err)
 	}
 
-	err = godotenv.Load(user.HomeDir + "/.env.toyotter")
+	err = godotenv.Load(u.HomeDir + "/.env.toyotter")
 	if err != nil {
 		modules.ErrorMessage("Not found ~/.env.toyotter")
 	}
@@ -36,10 +36,10 @@ func main() {
 	v := url.Values{}
 
 	app := cli.NewApp()
+
 	app.Name = "toyotter2"
 	app.Usage = "toyotter2 [command] [...option]"
 	app.Version = "0.2.5"
-
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),
 		commands.TimelineCommand(api, v),
@@ -53,8 +53,7 @@ func main() {
 	}
 
 	err := app.Run(os.Args)
-
 	if err != nil {
-		panic(err)
+		modules.ErrorMessage("Crash...")
 	}
 }

@@ -33,9 +33,9 @@ func muteFlags() []cli.Flag {
 func muteAction(c *cli.Context) error {
 	screenName := c.Args().First()
 	if c.Bool("delete") {
-		twitter.UnBlock(api, screenName, v)
+		twitter.UnMute(api, screenName, v)
 	} else {
-		twitter.Block(api, screenName, v)
+		twitter.Mute(api, screenName, v)
 	}
 	return nil
 }
