@@ -8,8 +8,7 @@ require (
 	github.com/dustin/gojson v0.0.0-20160307161227-2e71ec9dd5ad // indirect
 	github.com/garyburd/go-oauth v0.0.0-20180319155456-bca2e7f09a17 // indirect
 	github.com/joho/godotenv v1.3.0
-	github.com/logrusorgru/aurora v0.0.0-20181002194514-a7b3b318ed4e
+	github.com/logrusorgru/aurora v0.0.0-20190428105938-cea283e61946
 	github.com/urfave/cli v1.20.0
-	golang.org/x/crypto v0.0.0-20190404164418-38d8ce5564a5
-	golang.org/x/net v0.0.0-20190404232315-eb5bcb51f2a3 // indirect
+	golang.org/x/crypto v0.0.0-20190510104115-cbcb75029529
 )
