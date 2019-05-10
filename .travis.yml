@@ -7,9 +7,9 @@ install:
  - go get -u github.com/goreleaser/goreleaser
 
 script:
- - go vet ./...
- - diff <(goimports -d $(find . -type f -name '*.go' -not -path "./vendor/*")) <(printf "")
- - diff <(go list ./... | xargs -L1 golint -set_exit_status) <(printf "")
+ - env GO111MODULE=on go vet ./...
+ - diff <(env GO111MODULE=on goimports -d $(find . -type f -name '*.go' -not -path "./vendor/*")) <(printf "")
+ - diff <(env GO111MODULE=on go list ./... | xargs -L1 golint -set_exit_status) <(printf "")
 
 after_success:
  - goreleaser
