@@ -39,7 +39,7 @@ func main() {
 
 	app.Name = "toyotter2"
 	app.Usage = "toyotter2 [command] [...option]"
-	app.Version = "0.2.6"
+	app.Version = "0.2.7"
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),
 		commands.TimelineCommand(api, v),
