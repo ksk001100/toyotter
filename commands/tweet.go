@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/twitter"
+	"github.com/KeisukeToyota/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 
@@ -16,7 +16,7 @@ func TweetCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	return cli.Command{
 		Name:    "tweet",
 		Aliases: []string{"tw"},
-		Usage:   "toyotter2 tweet [text] [...option]",
+		Usage:   "toyotter tweet [text] [...option]",
 		Flags:   tweetFlags(),
 		Action:  tweetAction,
 	}
@@ -26,15 +26,15 @@ func tweetFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.StringFlag{
 			Name:  "image, img",
-			Usage: "toyotter2 tweet [text] --image=[imagePath]",
+			Usage: "toyotter tweet [text] --image=[imagePath]",
 		},
 		cli.StringFlag{
 			Name:  "reply, rep",
-			Usage: "toyotter2 tweet [text] --reply=[tweetID]",
+			Usage: "toyotter tweet [text] --reply=[tweetID]",
 		},
 		cli.StringFlag{
 			Name:  "delete, del, d",
-			Usage: "toyotter2 tweet --delete=[tweetID]",
+			Usage: "toyotter tweet --delete=[tweetID]",
 		},
 	}
 }

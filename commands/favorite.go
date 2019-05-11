@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/twitter"
+	"github.com/KeisukeToyota/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 
@@ -16,7 +16,7 @@ func FavoriteCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	return cli.Command{
 		Name:    "favorite",
 		Aliases: []string{"fav"},
-		Usage:   "toyotter2 favorite [tweetID]",
+		Usage:   "toyotter favorite [tweetID]",
 		Flags:   favoriteFlags(),
 		Action:  favoriteAction,
 	}
@@ -26,7 +26,7 @@ func favoriteFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.BoolFlag{
 			Name:  "delete, del, d",
-			Usage: "toyotter2 favorite [tweetID] --delete",
+			Usage: "toyotter favorite [tweetID] --delete",
 		},
 	}
 }
