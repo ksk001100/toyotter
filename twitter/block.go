@@ -5,7 +5,7 @@ import (
 	"net/url"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/modules"
+	"github.com/KeisukeToyota/toyotter/modules"
 )
 
 // Block block function
