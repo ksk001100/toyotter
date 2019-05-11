@@ -4,7 +4,7 @@ import (
 	"net/url"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/twitter"
+	"github.com/KeisukeToyota/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 
@@ -15,7 +15,7 @@ func MuteCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	return cli.Command{
 		Name:    "mute",
 		Aliases: []string{"mu"},
-		Usage:   "toyotter2 mute [screenName]",
+		Usage:   "toyotter mute [screenName]",
 		Flags:   muteFlags(),
 		Action:  muteAction,
 	}
@@ -25,7 +25,7 @@ func muteFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.BoolFlag{
 			Name:  "delete, del, d",
-			Usage: "toyotter2 mute [screenName] --delete",
+			Usage: "toyotter mute [screenName] --delete",
 		},
 	}
 }

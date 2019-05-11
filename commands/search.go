@@ -4,7 +4,7 @@ import (
 	"net/url"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/twitter"
+	"github.com/KeisukeToyota/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 
@@ -15,7 +15,7 @@ func SearchCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	return cli.Command{
 		Name:    "search",
 		Aliases: []string{"s"},
-		Usage:   "toyotter2 search [option]=[text]",
+		Usage:   "toyotter search [option]=[text]",
 		Flags:   searchFlags(),
 		Action:  searchAction,
 	}
@@ -25,16 +25,16 @@ func searchFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.StringFlag{
 			Name:  "user, u",
-			Usage: "toyotter2 search --user=[text]",
+			Usage: "toyotter search --user=[text]",
 		},
 		cli.StringFlag{
 			Name:  "tweet, tw",
-			Usage: "toyotter2 search --tweet=[text]",
+			Usage: "toyotter search --tweet=[text]",
 		},
 		cli.StringFlag{
 			Name:  "count, c",
 			Value: "5",
-			Usage: "toyotter2 search --{user|tweet}=[text] --count=[count]",
+			Usage: "toyotter search --{user|tweet}=[text] --count=[count]",
 		},
 	}
 }

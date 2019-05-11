@@ -4,7 +4,7 @@ import (
 	"net/url"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/twitter"
+	"github.com/KeisukeToyota/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 
@@ -15,7 +15,7 @@ func FollowCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	return cli.Command{
 		Name:    "follow",
 		Aliases: []string{"flw"},
-		Usage:   "toyotter2 follow [screenName]",
+		Usage:   "toyotter follow [screenName]",
 		Flags:   followFlags(),
 		Action:  followAction,
 	}
@@ -25,7 +25,7 @@ func followFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.BoolFlag{
 			Name:  "delete, del, d",
-			Usage: "toyotter2 follow [screenName] --delete",
+			Usage: "toyotter follow [screenName] --delete",
 		},
 	}
 }
