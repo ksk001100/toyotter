@@ -1,7 +1,7 @@
 release:
   github:
     owner: KeisukeToyota
-    name: toyotter2
+    name: toyotter
   name_template: '{{.Tag}}'
 before:
   hooks:
@@ -9,19 +9,19 @@ before:
 brew:
   github:
     owner: KeisukeToyota
-    name: homebrew-toyotter2
+    name: homebrew-toyotter
   commit_author:
     name: goreleaserbot
     email: goreleaser@carlosbecker.com
   description: "CUI based Twitter client for Golang"
-  homepage: "https://github.com/KeisukeToyota/toyotter2"
+  homepage: "https://github.com/KeisukeToyota/toyotter"
   dependencies:
     - fzf
   install: |
-    bin.install 'toyotter2'
+    bin.install 'toyotter'
 builds:
   - main: main.go
-    binary: toyotter2
+    binary: toyotter
     goos:
       - windows
       - darwin

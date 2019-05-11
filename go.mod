@@ -1,4 +1,4 @@
-module github.com/KeisukeToyota/toyotter2
+module github.com/KeisukeToyota/toyotter
 
 require (
 	github.com/ChimeraCoder/anaconda v2.0.0+incompatible

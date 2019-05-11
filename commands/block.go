@@ -4,7 +4,7 @@ import (
 	"net/url"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/twitter"
+	"github.com/KeisukeToyota/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 
@@ -15,7 +15,7 @@ func BlockCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	return cli.Command{
 		Name:    "block",
 		Aliases: []string{"blk"},
-		Usage:   "toyotter2 block [screenName]",
+		Usage:   "toyotter block [screenName]",
 		Flags:   blockFlags(),
 		Action:  blockAction,
 	}
@@ -25,11 +25,11 @@ func blockFlags() []cli.Flag {
 	return []cli.Flag{
 		cli.BoolFlag{
 			Name:  "delete, del, d",
-			Usage: "toyotter2 block [screenName] --delete",
+			Usage: "toyotter block [screenName] --delete",
 		},
 		cli.BoolFlag{
 			Name:  "list, l",
-			Usage: "toyotter2 block --list",
+			Usage: "toyotter block --list",
 		},
 	}
 }

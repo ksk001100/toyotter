@@ -6,8 +6,8 @@ import (
 	"os/user"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/commands"
-	"github.com/KeisukeToyota/toyotter2/modules"
+	"github.com/KeisukeToyota/toyotter/commands"
+	"github.com/KeisukeToyota/toyotter/modules"
 	"github.com/joho/godotenv"
 	"github.com/urfave/cli"
 )
@@ -37,8 +37,8 @@ func main() {
 
 	app := cli.NewApp()
 
-	app.Name = "toyotter2"
-	app.Usage = "toyotter2 [command] [...option]"
+	app.Name = "toyotter"
+	app.Usage = "toyotter [command] [...option]"
 	app.Version = "0.2.7"
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),

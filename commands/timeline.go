@@ -4,7 +4,7 @@ import (
 	"net/url"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/twitter"
+	"github.com/KeisukeToyota/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 
@@ -15,7 +15,7 @@ func TimelineCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	return cli.Command{
 		Name:    "timeline",
 		Aliases: []string{"tl"},
-		Usage:   "toyotter2 timeline [...option]",
+		Usage:   "toyotter timeline [...option]",
 		Flags:   timelineFlags(),
 		Action:  timelineAction,
 	}
@@ -26,7 +26,7 @@ func timelineFlags() []cli.Flag {
 		cli.StringFlag{
 			Name:  "count, c",
 			Value: "5",
-			Usage: "toyotter2 timeline --count=[count]",
+			Usage: "toyotter timeline --count=[count]",
 		},
 	}
 }

@@ -4,7 +4,7 @@ import (
 	"net/url"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter2/twitter"
+	"github.com/KeisukeToyota/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 
@@ -15,7 +15,7 @@ func MentionCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 	return cli.Command{
 		Name:    "mention",
 		Aliases: []string{"men"},
-		Usage:   "toyotter2 mension [option]",
+		Usage:   "toyotter mension [option]",
 		Flags:   mentionFlags(),
 		Action:  mentionAction,
 	}
@@ -26,7 +26,7 @@ func mentionFlags() []cli.Flag {
 		cli.StringFlag{
 			Name:  "count, c",
 			Value: "5",
-			Usage: "toyotter2 mension --count 20",
+			Usage: "toyotter mension --count 20",
 		},
 	}
 }
