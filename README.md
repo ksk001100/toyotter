@@ -9,6 +9,8 @@
 
 CUI based Twitter client made with Golang
 
+![Imgur](https://i.imgur.com/4iLQ5Bu.png)
+
 ## Install
 
 ```shell
