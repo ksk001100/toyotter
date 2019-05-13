@@ -20,7 +20,7 @@ $ cp $GOPATH/src/github.com/KeisukeToyota/toyotter/.env.example ~/.env.toyotter
 
 In macOS you can install it with Homebrew
 ```shell
-$ brew tap keisuketoyota/homebrew-toyotter
+$ brew tap keisuketoyota/toyotter
 $ brew install toyotter
 ```
 

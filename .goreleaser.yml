@@ -9,7 +9,7 @@ before:
 brew:
   github:
     owner: KeisukeToyota
-    name: homebrew-toyotter
+    name: toyotter
   commit_author:
     name: goreleaserbot
     email: goreleaser@carlosbecker.com
