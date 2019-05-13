@@ -37,9 +37,16 @@ func main() {
 
 	app := cli.NewApp()
 
-	app.Name = "toyotter"
-	app.Usage = "toyotter [command] [...option]"
-	app.Version = "0.3.0"
+	app.Name = `
+	_                    _   _
+ | |_ ___  _   _  ___ | |_| |_ ___ _ __
+ | __/ _ \| | | |/ _ \| __| __/ _ \ '__|
+ | || (_) | |_| | (_) | |_| ||  __/ |
+	\__\___/ \__, |\___/ \__|\__\___|_|
+					 |___/`
+
+	app.Usage = ""
+	app.Version = "0.3.1"
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),
 		commands.TimelineCommand(api, v),
