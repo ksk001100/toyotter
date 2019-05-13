@@ -1,21 +1,21 @@
 language: go
+
 go:
   - "1.11.4"
 env:
  - GO111MODULE=on
+
 install:
  - go mod download
- - go get -u golang.org/x/tools/cmd/goimports
- - go get -u golang.org/x/lint/golint
-script:
- - go vet ./...
- - diff <(goimports -d $(find . -type f -name '*.go' -not -path "./vendor/*")) <(printf "")
- - diff <(go list ./... | xargs -L1 golint -set_exit_status) <(printf "")
 
 deploy:
 - provider: script
   skip_cleanup: true
-  script: curl -sL https://git.io/goreleaser | bash
+  script: bash goreleaser.sh
   on:
     tags: true
     condition: $TRAVIS_OS_NAME = linux
+
+notifications:
+  email:
+    on_success: never
