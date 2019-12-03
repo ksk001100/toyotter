@@ -20,6 +20,7 @@ func GetFormatTweet(tweet anaconda.Tweet) string {
 		aurora.Green(tweet.User.ScreenName).String(), aurora.Red(tweet.User.IdStr).String(),
 		aurora.Green(tweet.FavoriteCount).String(), aurora.Green(tweet.RetweetCount).String(),
 		aurora.Bold(tweet.FullText).String(), aurora.Red(tweet.IdStr).String(),
+		aurora.Green(getTweetURL(tweet)),
 		SeparatorString(),
 	)
 }
@@ -63,6 +64,7 @@ func getFormatTweetTemplate() string {
 %s
 
 [TweetID : %s]
+[URL : %s]
 
 %s`
 }
@@ -75,4 +77,8 @@ func getFormatUserTemplate() string {
 %s
 
 %s`
+}
+
+func getTweetURL(tweet anaconda.Tweet) string {
+	return fmt.Sprintf("https://twitter.com/%s/status/%s", tweet.User.ScreenName, tweet.IdStr)
 }
