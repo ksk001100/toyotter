@@ -46,7 +46,7 @@ func main() {
 					 |___/`
 
 	app.Usage = ""
-	app.Version = "0.3.6"
+	app.Version = "0.4.0"
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),
 		commands.TimelineCommand(api, v),
