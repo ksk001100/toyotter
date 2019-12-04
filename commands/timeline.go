@@ -2,6 +2,7 @@ package commands
 
 import (
 	"net/url"
+	"strconv"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/KeisukeToyota/toyotter/twitter"
@@ -28,11 +29,21 @@ func timelineFlags() []cli.Flag {
 			Value: "5",
 			Usage: "toyotter timeline --count=[count]",
 		},
+		cli.StringFlag{
+			Name: "list, li",
+			Usage: "toyotter timeline --list=[listID]",
+		},
 	}
 }
 
 func timelineAction(c *cli.Context) error {
 	v.Set("count", c.String("count"))
-	twitter.HomeTimeline(api, v)
+
+	if len(c.String("list")) > 0 {
+		listID, _ := strconv.ParseInt(c.String("list"), 10, 64)
+		twitter.ListTimeline(api, listID, v)
+	} else {
+		twitter.HomeTimeline(api, v)
+	}
 	return nil
 }
