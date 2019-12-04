@@ -10,7 +10,7 @@ import (
 
 // Lists lists function
 func Lists(api *anaconda.TwitterApi, v url.Values) {
-	user, err := api.GetSelf(v)
+	user, _ := api.GetSelf(v)
 	lists, err := api.GetListsOwnedBy(user.Id, v)
 
 	if err != nil {
