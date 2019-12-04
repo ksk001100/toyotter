@@ -57,6 +57,7 @@ func main() {
 		commands.BlockCommand(api, v),
 		commands.MentionCommand(api, v),
 		commands.MuteCommand(api, v),
+		commands.ListCommand(api, v),
 	}
 
 	err := app.Run(os.Args)
