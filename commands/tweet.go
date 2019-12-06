@@ -36,6 +36,10 @@ func tweetFlags() []cli.Flag {
 			Name:  "delete, del, d",
 			Usage: "toyotter tweet --delete=[tweetID]",
 		},
+		cli.StringFlag{
+			Name:  "quote, q",
+			Usage: "toyotter tweet [text] --quote=[tweetID]",
+		},
 	}
 }
 
@@ -53,6 +57,9 @@ func tweetAction(c *cli.Context) error {
 		if len(c.String("reply")) > 0 {
 			tweetID, _ := strconv.ParseInt(c.String("reply"), 10, 64)
 			twitter.Reply(api, text, tweetID, v)
+		} else if len(c.String("quote")) > 0 {
+			quoteTweetID, _ := strconv.ParseInt(c.String("quote"), 10, 64)
+			twitter.QuoteTweet(api, text, quoteTweetID, v)
 		} else {
 			twitter.Tweet(api, text, v)
 		}

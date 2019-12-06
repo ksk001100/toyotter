@@ -20,7 +20,7 @@ func GetFormatTweet(tweet anaconda.Tweet) string {
 		aurora.Green(tweet.User.ScreenName).String(), aurora.Red(tweet.User.IdStr).String(),
 		aurora.Green(tweet.FavoriteCount).String(), aurora.Green(tweet.RetweetCount).String(),
 		aurora.Bold(tweet.FullText).String(), aurora.Red(tweet.IdStr).String(),
-		aurora.Green(getTweetURL(tweet)),
+		aurora.Green(GetTweetURL(tweet)),
 		SeparatorString(),
 	)
 }
@@ -42,7 +42,7 @@ func GetFormatList(list anaconda.List) string {
 		aurora.Blue(list.Name),
 		aurora.Red(list.Description),
 		aurora.Yellow(list.MemberCount),
-		aurora.Green(getListURL(list)),
+		aurora.Green(GetListURL(list)),
 		SeparatorString(),
 	)
 }
@@ -56,6 +56,16 @@ func ErrorMessage(text string) {
 func SeparatorString() string {
 	width, _, _ := terminal.GetSize(0)
 	return strings.Repeat("-", width)
+}
+
+// GetTweetURL get twwet url
+func GetTweetURL(tweet anaconda.Tweet) string {
+	return fmt.Sprintf("https://twitter.com/%s/status/%s", tweet.User.ScreenName, tweet.IdStr)
+}
+
+// GetListURL get list url
+func GetListURL(list anaconda.List) string {
+	return fmt.Sprintf("https://twitter.com%s", list.URL)
 }
 
 func getJapanDateTimeString(t time.Time) string {
@@ -101,13 +111,3 @@ func getFormatListTemplate() string {
 
 %s`
 }
-
-func getTweetURL(tweet anaconda.Tweet) string {
-	return fmt.Sprintf("https://twitter.com/%s/status/%s", tweet.User.ScreenName, tweet.IdStr)
-}
-
-func getListURL(list anaconda.List) string {
-	return fmt.Sprintf("https://twitter.com%s", list.URL)
-}
-
-
