@@ -44,6 +44,8 @@ $ toyotter tweet delete 34820348023 #=> Delete the 34820348023 tweet
 $ toyotter tw d 34820348023 #=> Delete the 34820348023 tweet
 $ toyotter tweet "Hi" --reply 34820348023 #=> Reply to tweet of 34820348023
 $ toyotter tw "Bye" --reply 34820348023 #=> Reply to tweet of 34820348023
+$ toyotter tweet "Quote tweet" --quote 34820348023 #=> Quoted tweet of 34820348023
+$ toyotter tw "Quote tweet" -q 34820348023 #=> Quoted tweet of 34820348023
 ```
 
 ### Timeline
