@@ -48,3 +48,17 @@ func Reply(api *anaconda.TwitterApi, text string, tweetID int64, v url.Values) {
 
 	fmt.Println(modules.GetFormatTweet(replayTweet))
 }
+
+// QuoteTweet quote tweet function
+func QuoteTweet(api *anaconda.TwitterApi, text string, quoteTweetID int64, v url.Values) {
+	quoteTweet, err := api.GetTweet(quoteTweetID, url.Values{})
+
+	if err != nil {
+		modules.ErrorMessage("The tweet you quoted is not valid")
+	}
+
+	quoteTweetURL := modules.GetTweetURL(quoteTweet)
+	quotedTweetText := fmt.Sprintf("%s\n%s", text, quoteTweetURL)
+
+	Tweet(api, quotedTweetText, v)
+}
