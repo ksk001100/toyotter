@@ -1,20 +1,16 @@
 language: go
 
 go:
-  - "1.11.4"
+  - "1.13.4"
 env:
  - GO111MODULE=on
 
 install:
  - go mod download
+ - go get -u github.com/goreleaser/goreleaser
 
-deploy:
-- provider: script
-  skip_cleanup: true
-  script: bash goreleaser.sh
-  on:
-    tags: true
-    condition: $TRAVIS_OS_NAME = linux
+after_success:
+  - goreleaser
 
 notifications:
   email:
