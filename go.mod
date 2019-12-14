@@ -12,3 +12,5 @@ require (
 	github.com/urfave/cli v1.20.0
 	golang.org/x/crypto v0.0.0-20190510104115-cbcb75029529
 )
+
+go 1.13
