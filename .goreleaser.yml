@@ -1,6 +1,6 @@
 release:
   github:
-    owner: KeisukeToyota
+    owner: ksk001100
     name: toyotter
   name_template: '{{.Tag}}'
 before:
@@ -8,13 +8,13 @@ before:
     - go mod download
 brew:
   github:
-    owner: KeisukeToyota
+    owner: ksk001100
     name: homebrew-toyotter
   commit_author:
     name: goreleaserbot
     email: goreleaser@carlosbecker.com
   description: "CUI based Twitter client for Golang"
-  homepage: "https://github.com/KeisukeToyota/toyotter"
+  homepage: "https://github.com/ksk001100/toyotter"
   dependencies:
     - fzf
   install: |

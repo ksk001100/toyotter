@@ -1,11 +1,11 @@
 # toyotter
-![](https://img.shields.io/github/stars/KeisukeToyota/toyotter.svg)
-![](https://img.shields.io/github/release/KeisukeToyota/toyotter.svg)
-![](https://img.shields.io/github/issues/KeisukeToyota/toyotter.svg)
-![](https://img.shields.io/github/forks/KeisukeToyota/toyotter.svg)
-![](https://img.shields.io/github/license/KeisukeToyota/toyotter.svg)
-[![Build Status](https://travis-ci.org/KeisukeToyota/toyotter.svg?branch=master)](https://travis-ci.org/KeisukeToyota/toyotter)
-[![Go Report Card](https://goreportcard.com/badge/github.com/KeisukeToyota/toyotter)](https://goreportcard.com/report/github.com/KeisukeToyota/toyotter)
+![](https://img.shields.io/github/stars/ksk001100/toyotter.svg)
+![](https://img.shields.io/github/release/ksk001100/toyotter.svg)
+![](https://img.shields.io/github/issues/ksk001100/toyotter.svg)
+![](https://img.shields.io/github/forks/ksk001100/toyotter.svg)
+![](https://img.shields.io/github/license/ksk001100/toyotter.svg)
+[![Build Status](https://travis-ci.org/ksk001100/toyotter.svg?branch=master)](https://travis-ci.org/ksk001100/toyotter)
+[![Go Report Card](https://goreportcard.com/badge/github.com/ksk001100/toyotter)](https://goreportcard.com/report/github.com/ksk001100/toyotter)
 
 CUI based Twitter client made with Golang
 
@@ -14,13 +14,13 @@ CUI based Twitter client made with Golang
 ## Install
 
 ```shell
-$ go get github.com/KeisukeToyota/toyotter
-$ cp $GOPATH/src/github.com/KeisukeToyota/toyotter/.env.example ~/.env.toyotter
+$ go get github.com/ksk001100/toyotter
+$ cp $GOPATH/src/github.com/ksk001100/toyotter/.env.example ~/.env.toyotter
 ```
 
 In macOS you can install it with Homebrew
 ```shell
-$ brew tap keisuketoyota/toyotter
+$ brew tap ksk001100/toyotter
 $ brew install toyotter
 ```
 
