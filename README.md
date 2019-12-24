@@ -44,13 +44,18 @@ $ toyotter tweet delete 34820348023 #=> Delete the 34820348023 tweet
 $ toyotter tw d 34820348023 #=> Delete the 34820348023 tweet
 $ toyotter tweet "Hi" --reply 34820348023 #=> Reply to tweet of 34820348023
 $ toyotter tw "Bye" --reply 34820348023 #=> Reply to tweet of 34820348023
+$ toyotter tweet "Quote tweet" --quote 34820348023 #=> Quoted tweet of 34820348023
+$ toyotter tw "Quote tweet" -q 34820348023 #=> Quoted tweet of 34820348023
 ```
 
 ### Timeline
 ```shell
-$ toyotter timeline #=> Get timeline(Get 5 by default)
+$ toyotter timeline #=> Get timeline(Get 5 by default)
 $ toyotter timeline --count 30 #=> Get 30 timelines
 $ toyotter tl -c=20 #=> Get 20 timelines
+$ toyotter timeline --list 38594385458 #=> Get list timesline of 38594385458(Get 5 by default)
+$ toyotter tl -li=38594385458 #=> Get list timesline of 38594385458(Get 5 by default)
+$ toyotter tl --list=38594385458 --count 10 #=> Get 10 list timeline of 38594385458
 ```
 
 ### Search
@@ -108,6 +113,12 @@ $ toyotter mute TwitterJP #=> Mute @TwitterJP
 $ toyotter mu TwitterJP #=> Mute @TwitterJP
 $ toyotter mute TwitterJP --delete #=> UnMute @TwitterJP
 $ toyotter mu TwitterJP -d #=> UnMute @TwitterJP
+```
+
+### List
+```shell
+$ toyotter list #=> Get lists
+$ toyotter li #=> Get lists
 ```
 
 ### Help

@@ -46,7 +46,7 @@ func main() {
 					 |___/`
 
 	app.Usage = ""
-	app.Version = "0.3.5"
+	app.Version = "0.5.3"
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),
 		commands.TimelineCommand(api, v),
@@ -57,6 +57,7 @@ func main() {
 		commands.BlockCommand(api, v),
 		commands.MentionCommand(api, v),
 		commands.MuteCommand(api, v),
+		commands.ListCommand(api, v),
 	}
 
 	err := app.Run(os.Args)
