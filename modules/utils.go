@@ -54,7 +54,10 @@ func ErrorMessage(text string) {
 
 // SeparatorString separator function
 func SeparatorString() string {
-	width, _, _ := terminal.GetSize(0)
+	width, _, err := terminal.GetSize(0)
+	if err != nil {
+		return ""
+	}
 	return strings.Repeat("-", width)
 }
 

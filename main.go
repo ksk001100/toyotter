@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"net/url"
 	"os"
 	"os/user"
+	// "fmt"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/KeisukeToyota/toyotter/commands"
@@ -46,7 +48,7 @@ func main() {
 					 |___/`
 
 	app.Usage = ""
-	app.Version = "0.5.3"
+	app.Version = "0.5.4"
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),
 		commands.TimelineCommand(api, v),
@@ -59,8 +61,21 @@ func main() {
 		commands.MuteCommand(api, v),
 		commands.ListCommand(api, v),
 	}
+	
+	args := os.Args
+	if len(os.Args) < 3 {
+		var temp string
+		reader := bufio.NewScanner(os.Stdin)
 
-	err := app.Run(os.Args)
+		for reader.Scan() {
+			scan := reader.Text()
+			temp += scan
+		}
+
+		args = append(args, temp)
+	}
+
+	err := app.Run(args)
 	if err != nil {
 		modules.ErrorMessage("Crash...")
 	}
