@@ -63,7 +63,7 @@ func main() {
 	}
 	
 	args := os.Args
-	if len(os.Args) < 3 {
+	if len(args) == 2 && (args[1] == "tw" || args[1] == "tweet") {
 		var temp string
 		reader := bufio.NewScanner(os.Stdin)
 
