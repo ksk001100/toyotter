@@ -7,18 +7,19 @@ before:
   hooks:
     - go mod download
 brews:
-  github:
-    owner: ksk001100
-    name: homebrew-toyotter
-  commit_author:
-    name: goreleaserbot
-    email: goreleaser@carlosbecker.com
-  description: "CUI based Twitter client for Golang"
-  homepage: "https://github.com/ksk001100/toyotter"
-  dependencies:
-    - fzf
-  install: |
-    bin.install 'toyotter'
+  -
+    github:
+      owner: ksk001100
+      name: homebrew-toyotter
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@carlosbecker.com
+    description: "CUI based Twitter client for Golang"
+    homepage: "https://github.com/ksk001100/toyotter"
+    dependencies:
+      - fzf
+    install: |
+      bin.install 'toyotter'
 builds:
   - main: main.go
     binary: toyotter
@@ -28,11 +29,12 @@ builds:
     goarch:
       - amd64
 archives:
-  replacements:
-    darwin: macOS
-    linux: Linux
-    386: i386
-    amd64: x86_64
+  -
+    replacements:
+      darwin: macOS
+      linux: Linux
+      386: i386
+      amd64: x86_64
 checksum:
   name_template: 'checksums.txt'
 snapshot:
