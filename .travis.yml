@@ -7,7 +7,6 @@ env:
 
 install:
  - go mod download
- - go get -u github.com/goreleaser/goreleaser
 
 notifications:
   email:
