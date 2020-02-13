@@ -1,17 +1,17 @@
 package main
 
 import (
-	"bufio"
+	"io/ioutil"
 	"net/url"
 	"os"
 	"os/user"
-	// "fmt"
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/KeisukeToyota/toyotter/commands"
 	"github.com/KeisukeToyota/toyotter/modules"
 	"github.com/joho/godotenv"
 	"github.com/urfave/cli"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 func loadEnv() {
@@ -48,7 +48,7 @@ func main() {
 					 |___/`
 
 	app.Usage = ""
-	app.Version = "0.5.5"
+	app.Version = "0.5.6"
 	app.Commands = []cli.Command{
 		commands.TweetCommand(api, v),
 		commands.TimelineCommand(api, v),
@@ -61,21 +61,16 @@ func main() {
 		commands.MuteCommand(api, v),
 		commands.ListCommand(api, v),
 	}
-	
+
 	args := os.Args
-	if len(args) == 2 && (args[1] == "tw" || args[1] == "tweet") {
-		var temp string
-		reader := bufio.NewScanner(os.Stdin)
 
-		for reader.Scan() {
-			scan := reader.Text()
-			temp += scan
-		}
-
-		args = append(args, temp)
+	if !terminal.IsTerminal(0) {
+		b, _ := ioutil.ReadAll(os.Stdin)
+		args = append(args, string(b))
 	}
 
 	err := app.Run(args)
+
 	if err != nil {
 		modules.ErrorMessage("Crash...")
 	}
