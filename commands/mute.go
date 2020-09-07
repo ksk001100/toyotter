@@ -22,11 +22,12 @@ func MuteCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func muteFlags() []cli.Flag {
+	deleteFlag := cli.BoolFlag{
+		Name:  "delete, del, d",
+		Usage: "toyotter mute [screenName] --delete",
+	}
 	return []cli.Flag{
-		cli.BoolFlag{
-			Name:  "delete, del, d",
-			Usage: "toyotter mute [screenName] --delete",
-		},
+		&deleteFlag,
 	}
 }
 

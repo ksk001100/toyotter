@@ -22,12 +22,13 @@ func MentionCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func mentionFlags() []cli.Flag {
+	countFlag := cli.StringFlag{
+		Name:  "count, c",
+		Value: "5",
+		Usage: "toyotter mension --count 20",
+	}
 	return []cli.Flag{
-		cli.StringFlag{
-			Name:  "count, c",
-			Value: "5",
-			Usage: "toyotter mension --count 20",
-		},
+		&countFlag,
 	}
 }
 

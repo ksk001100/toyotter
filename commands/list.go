@@ -22,12 +22,13 @@ func ListCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func listFlags() []cli.Flag {
+	countFlag := cli.StringFlag{
+		Name:  "count c",
+		Value: "10",
+		Usage: "toyotter list --count=[count]",
+	}
 	return []cli.Flag{
-		cli.StringFlag{
-			Name:  "count c",
-			Value: "10",
-			Usage: "toyotter list --count=[count]",
-		},
+		&countFlag,
 	}
 }
 

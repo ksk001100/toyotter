@@ -23,16 +23,18 @@ func TimelineCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func timelineFlags() []cli.Flag {
+	countFlag := cli.StringFlag{
+		Name:  "count, c",
+		Value: "5",
+		Usage: "toyotter timeline --count=[count]",
+	}
+	listFlag := cli.StringFlag{
+		Name:  "list, li",
+		Usage: "toyotter timeline --list=[listID]",
+	}
 	return []cli.Flag{
-		cli.StringFlag{
-			Name:  "count, c",
-			Value: "5",
-			Usage: "toyotter timeline --count=[count]",
-		},
-		cli.StringFlag{
-			Name: "list, li",
-			Usage: "toyotter timeline --list=[listID]",
-		},
+		&countFlag,
+		&listFlag,
 	}
 }
 

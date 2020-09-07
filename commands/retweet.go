@@ -23,11 +23,12 @@ func RetweetCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func retweetFlags() []cli.Flag {
+	deleteFlag := cli.BoolFlag{
+		Name:  "delete, del, d",
+		Usage: "toyotter retweet [tweetID] --delete",
+	}
 	return []cli.Flag{
-		cli.BoolFlag{
-			Name:  "delete, del, d",
-			Usage: "toyotter retweet [tweetID] --delete",
-		},
+		&deleteFlag,
 	}
 }
 

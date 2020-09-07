@@ -22,11 +22,12 @@ func FollowCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func followFlags() []cli.Flag {
+	deleteFlag := cli.BoolFlag{
+		Name:  "delete, del, d",
+		Usage: "toyotter follow [screenName] --delete",
+	}
 	return []cli.Flag{
-		cli.BoolFlag{
-			Name:  "delete, del, d",
-			Usage: "toyotter follow [screenName] --delete",
-		},
+		&deleteFlag,
 	}
 }
 

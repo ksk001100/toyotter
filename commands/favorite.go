@@ -23,11 +23,12 @@ func FavoriteCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func favoriteFlags() []cli.Flag {
+	deleteFlag := cli.BoolFlag{
+		Name:  "delete, del, d",
+		Usage: "toyotter favorite [tweetID] --delete",
+	}
 	return []cli.Flag{
-		cli.BoolFlag{
-			Name:  "delete, del, d",
-			Usage: "toyotter favorite [tweetID] --delete",
-		},
+		&deleteFlag,
 	}
 }
 

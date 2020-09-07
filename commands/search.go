@@ -22,20 +22,23 @@ func SearchCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func searchFlags() []cli.Flag {
+	userFlag := cli.StringFlag{
+		Name:  "user, u",
+		Usage: "toyotter search --user=[text]",
+	}
+	tweetFlag := cli.StringFlag{
+		Name:  "tweet, tw",
+		Usage: "toyotter search --tweet=[text]",
+	}
+	countFlag := cli.StringFlag{
+		Name:  "count, c",
+		Value: "5",
+		Usage: "toyotter search --{user|tweet}=[text] --count=[count]",
+	}
 	return []cli.Flag{
-		cli.StringFlag{
-			Name:  "user, u",
-			Usage: "toyotter search --user=[text]",
-		},
-		cli.StringFlag{
-			Name:  "tweet, tw",
-			Usage: "toyotter search --tweet=[text]",
-		},
-		cli.StringFlag{
-			Name:  "count, c",
-			Value: "5",
-			Usage: "toyotter search --{user|tweet}=[text] --count=[count]",
-		},
+		&userFlag,
+		&tweetFlag,
+		&countFlag,
 	}
 }
 

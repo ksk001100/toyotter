@@ -22,15 +22,17 @@ func BlockCommand(a *anaconda.TwitterApi, val url.Values) cli.Command {
 }
 
 func blockFlags() []cli.Flag {
+	deleteFlag := cli.BoolFlag{
+		Name:  "delete, del, d",
+		Usage: "toyotter block [screenName] --delete",
+	}
+	listFlag := cli.BoolFlag{
+		Name:  "list, l",
+		Usage: "toyotter block --list",
+	}
 	return []cli.Flag{
-		cli.BoolFlag{
-			Name:  "delete, del, d",
-			Usage: "toyotter block [screenName] --delete",
-		},
-		cli.BoolFlag{
-			Name:  "list, l",
-			Usage: "toyotter block --list",
-		},
+		&deleteFlag,
+		&listFlag,
 	}
 }
 
