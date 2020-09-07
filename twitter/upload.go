@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter/modules"
+	"github.com/ksk001100/toyotter/modules"
 )
 
 func imageToBase64String(path string) string {

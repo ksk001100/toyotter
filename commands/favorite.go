@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter/twitter"
+	"github.com/ksk001100/toyotter/twitter"
 	"github.com/urfave/cli"
 )
 

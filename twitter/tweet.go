@@ -6,7 +6,7 @@ import (
 	"strconv"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter/modules"
+	"github.com/ksk001100/toyotter/modules"
 )
 
 // Tweet tweet function

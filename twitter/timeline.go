@@ -5,7 +5,7 @@ import (
 	"net/url"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter/modules"
+	"github.com/ksk001100/toyotter/modules"
 )
 
 // HomeTimeline hometimeline function

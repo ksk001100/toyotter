@@ -7,8 +7,8 @@ import (
 	"os/user"
 
 	"github.com/ChimeraCoder/anaconda"
-	"github.com/KeisukeToyota/toyotter/commands"
-	"github.com/KeisukeToyota/toyotter/modules"
+	"github.com/ksk001100/toyotter/commands"
+	"github.com/ksk001100/toyotter/modules"
 	"github.com/joho/godotenv"
 	"github.com/urfave/cli"
 	"golang.org/x/crypto/ssh/terminal"
