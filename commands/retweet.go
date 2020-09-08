@@ -6,7 +6,7 @@ import (
 
 	"github.com/ChimeraCoder/anaconda"
 	"github.com/ksk001100/toyotter/twitter"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 // RetweetCommand retweet command function

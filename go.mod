@@ -1,5 +1,7 @@
 module github.com/ksk001100/toyotter
 
+go 1.15
+
 require (
 	github.com/ChimeraCoder/anaconda v2.0.0+incompatible
 	github.com/ChimeraCoder/tokenbucket v0.0.0-20131201223612-c5a927568de7 // indirect
@@ -8,9 +10,7 @@ require (
 	github.com/dustin/gojson v0.0.0-20160307161227-2e71ec9dd5ad // indirect
 	github.com/garyburd/go-oauth v0.0.0-20180319155456-bca2e7f09a17 // indirect
 	github.com/joho/godotenv v1.3.0
-	github.com/logrusorgru/aurora v0.0.0-20190428105938-cea283e61946
-	github.com/urfave/cli v1.20.0
-	golang.org/x/crypto v0.0.0-20190510104115-cbcb75029529
+	github.com/logrusorgru/aurora v2.0.3+incompatible
+	github.com/urfave/cli/v2 v2.2.0
+	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
 )
-
-go 1.13

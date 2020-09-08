@@ -10,7 +10,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/ksk001100/toyotter/commands"
 	"github.com/ksk001100/toyotter/modules"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 	"golang.org/x/crypto/ssh/terminal"
 )
 
@@ -37,9 +37,9 @@ func main() {
 	api := getTwitterAPI()
 	v := url.Values{}
 
-	app := cli.NewApp()
+	// app := cli.NewApp()
 
-	app.Name = `
+	name := `
 	_                    _   _
  | |_ ___  _   _  ___ | |_| |_ ___ _ __
  | __/ _ \| | | |/ _ \| __| __/ _ \ '__|
@@ -47,19 +47,33 @@ func main() {
 	\__\___/ \__, |\___/ \__|\__\___|_|
 					 |___/`
 
-	app.Usage = ""
-	app.Version = "0.5.6"
-	app.Commands = []cli.Command{
-		commands.TweetCommand(api, v),
-		commands.TimelineCommand(api, v),
-		commands.SearchCommand(api, v),
-		commands.RetweetCommand(api, v),
-		commands.FavoriteCommand(api, v),
-		commands.FollowCommand(api, v),
-		commands.BlockCommand(api, v),
-		commands.MentionCommand(api, v),
-		commands.MuteCommand(api, v),
-		commands.ListCommand(api, v),
+	tweetCommand := commands.TweetCommand(api, v)
+	timelineCommand := commands.TimelineCommand(api, v)
+	searchCommand := commands.SearchCommand(api, v)
+	retweetCommand := commands.RetweetCommand(api, v)
+	favoriteCommand := commands.FavoriteCommand(api, v)
+	followCommand := commands.FollowCommand(api, v)
+	blockCommand := commands.BlockCommand(api, v)
+	mentionCommand := commands.MentionCommand(api, v)
+	muteCommand := commands.MuteCommand(api, v)
+	listCommand := commands.ListCommand(api, v)
+
+	app := &cli.App{
+		Name:    name,
+		Usage:   "",
+		Version: "0.5.6",
+		Commands: []*cli.Command{
+			&tweetCommand,
+			&timelineCommand,
+			&searchCommand,
+			&retweetCommand,
+			&favoriteCommand,
+			&followCommand,
+			&blockCommand,
+			&mentionCommand,
+			&muteCommand,
+			&listCommand,
+		},
 	}
 
 	args := os.Args
