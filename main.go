@@ -37,8 +37,6 @@ func main() {
 	api := getTwitterAPI()
 	v := url.Values{}
 
-	// app := cli.NewApp()
-
 	name := `
 	_                    _   _
  | |_ ___  _   _  ___ | |_| |_ ___ _ __
