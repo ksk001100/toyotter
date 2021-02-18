@@ -37,13 +37,7 @@ func main() {
 	api := getTwitterAPI()
 	v := url.Values{}
 
-	name := `
-	_                    _   _
- | |_ ___  _   _  ___ | |_| |_ ___ _ __
- | __/ _ \| | | |/ _ \| __| __/ _ \ '__|
- | || (_) | |_| | (_) | |_| ||  __/ |
-	\__\___/ \__, |\___/ \__|\__\___|_|
-					 |___/`
+	name := "toyotter"
 
 	tweetCommand := commands.TweetCommand(api, v)
 	timelineCommand := commands.TimelineCommand(api, v)
@@ -58,8 +52,8 @@ func main() {
 
 	app := &cli.App{
 		Name:    name,
-		Usage:   "",
-		Version: "0.5.6",
+		Usage:   "CUI based Twitter client made with Golang",
+		Version: "0.5.7",
 		Commands: []*cli.Command{
 			&tweetCommand,
 			&timelineCommand,
